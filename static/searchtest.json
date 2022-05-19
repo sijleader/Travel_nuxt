@@ -1,0 +1,314 @@
+{
+  "Success": true,
+  "Error": null,
+  "PricedItineraries": [
+    {
+      "IsPassportMandatory": true,
+      "IsDestinationAddressMandatory": false,
+      "IsPassportIssueDateMandatory": false,
+      "DirectionInd": 1,
+      "NonRefundableType": 0,
+      "RefundMethod": 2,
+      "ValidatingAirlineCode": "HH",
+      "FareSourceCode": "303132653461633461396661346262343931363932383965303762633839373626323037302631363731313730",
+      "AirItineraryPricingInfo": {
+        "FareType": 2,
+        "ItinTotalFare": {
+          "BaseFare": 0.0,
+          "TotalFare": 9000000.0,
+          "TotalCommission": 0.0,
+          "TotalTax": 9000000.0,
+          "ServiceTax": 0.0,
+          "Currency": "IRR"
+        },
+        "PtcFareBreakdown": [
+          {
+            "PassengerFare": {
+              "BaseFare": 0.0,
+              "TotalFare": 9000000.0,
+              "Commission": 0.0,
+              "ServiceTax": 0.0,
+              "Taxes": [
+                {
+                  "Amount": 9000000.0,
+                  "Currency": "IRR"
+                }
+              ],
+              "Currency": "IRR"
+            },
+            "PassengerTypeQuantity": {
+              "PassengerType": 1,
+              "Quantity": 1
+            }
+          }
+        ],
+        "FareInfoes": []
+      },
+      "OriginDestinationOptions": [
+        {
+          "JourneyDurationPerMinute": 660,
+          "ConnectionTimePerMinute": 0,
+          "FlightSegments": [
+            {
+              "DepartureDateTime": "2022-03-03T13:00:00",
+              "ArrivalDateTime": "2022-03-04T00:00:00",
+              "StopQuantity": 0,
+              "FlightNumber": "6303",
+              "ResBookDesigCode": "Y",
+              "JourneyDuration": "11:00",
+              "JourneyDurationPerMinute": 660,
+              "ConnectionTimePerMinute": 0,
+              "DepartureAirportLocationCode": "MHD",
+              "ArrivalAirportLocationCode": "THR",
+              "MarketingAirlineCode": "HH",
+              "CabinClassCode": 1,
+              "OperatingAirline": {
+                "Code": "HH",
+                "FlightNumber": "6303",
+                "Equipment": ""
+              },
+              "SeatsRemaining": 4,
+              "IsCharter": true,
+              "IsReturn": false,
+              "Baggage": null,
+              "TechnicalStops": []
+            }
+          ]
+        }
+      ],
+      "IsPassportNameWithSpace": false,
+      "FareFamily": null
+    },
+    {
+      "IsPassportMandatory": true,
+      "IsDestinationAddressMandatory": false,
+      "IsPassportIssueDateMandatory": false,
+      "DirectionInd": 1,
+      "NonRefundableType": 0,
+      "RefundMethod": 2,
+      "ValidatingAirlineCode": "HH",
+      "FareSourceCode": "653562636337366663353761343463393933376635646564616630643862343326323037302631363731313730",
+      "AirItineraryPricingInfo": {
+        "FareType": 2,
+        "ItinTotalFare": {
+          "BaseFare": 0.0,
+          "TotalFare": 9400000.0,
+          "TotalCommission": 0.0,
+          "TotalTax": 9400000.0,
+          "ServiceTax": 0.0,
+          "Currency": "IRR"
+        },
+        "PtcFareBreakdown": [
+          {
+            "PassengerFare": {
+              "BaseFare": 0.0,
+              "TotalFare": 9400000.0,
+              "Commission": 0.0,
+              "ServiceTax": 0.0,
+              "Taxes": [
+                {
+                  "Amount": 9400000.0,
+                  "Currency": "IRR"
+                }
+              ],
+              "Currency": "IRR"
+            },
+            "PassengerTypeQuantity": {
+              "PassengerType": 1,
+              "Quantity": 1
+            }
+          }
+        ],
+        "FareInfoes": []
+      },
+      "OriginDestinationOptions": [
+        {
+          "JourneyDurationPerMinute": 375,
+          "ConnectionTimePerMinute": 0,
+          "FlightSegments": [
+            {
+              "DepartureDateTime": "2022-03-03T17:45:00",
+              "ArrivalDateTime": "2022-03-04T00:00:00",
+              "StopQuantity": 0,
+              "FlightNumber": "6341",
+              "ResBookDesigCode": "Y",
+              "JourneyDuration": "06:15",
+              "JourneyDurationPerMinute": 375,
+              "ConnectionTimePerMinute": 0,
+              "DepartureAirportLocationCode": "MHD",
+              "ArrivalAirportLocationCode": "THR",
+              "MarketingAirlineCode": "HH",
+              "CabinClassCode": 1,
+              "OperatingAirline": {
+                "Code": "HH",
+                "FlightNumber": "6341",
+                "Equipment": ""
+              },
+              "SeatsRemaining": 5,
+              "IsCharter": true,
+              "IsReturn": false,
+              "Baggage": null,
+              "TechnicalStops": []
+            }
+          ]
+        }
+      ],
+      "IsPassportNameWithSpace": false,
+      "FareFamily": null
+    },
+    {
+      "IsPassportMandatory": true,
+      "IsDestinationAddressMandatory": false,
+      "IsPassportIssueDateMandatory": false,
+      "DirectionInd": 1,
+      "NonRefundableType": 0,
+      "RefundMethod": 2,
+      "ValidatingAirlineCode": "IV",
+      "FareSourceCode": "643064376430333764313139343735306138353665316437646138313361663926323037302631363731313730",
+      "AirItineraryPricingInfo": {
+        "FareType": 2,
+        "ItinTotalFare": {
+          "BaseFare": 0.0,
+          "TotalFare": 9500000.0,
+          "TotalCommission": 0.0,
+          "TotalTax": 9500000.0,
+          "ServiceTax": 0.0,
+          "Currency": "IRR"
+        },
+        "PtcFareBreakdown": [
+          {
+            "PassengerFare": {
+              "BaseFare": 0.0,
+              "TotalFare": 9500000.0,
+              "Commission": 0.0,
+              "ServiceTax": 0.0,
+              "Taxes": [
+                {
+                  "Amount": 9500000.0,
+                  "Currency": "IRR"
+                }
+              ],
+              "Currency": "IRR"
+            },
+            "PassengerTypeQuantity": {
+              "PassengerType": 1,
+              "Quantity": 1
+            }
+          }
+        ],
+        "FareInfoes": []
+      },
+      "OriginDestinationOptions": [
+        {
+          "JourneyDurationPerMinute": 430,
+          "ConnectionTimePerMinute": 0,
+          "FlightSegments": [
+            {
+              "DepartureDateTime": "2022-03-03T16:50:00",
+              "ArrivalDateTime": "2022-03-04T00:00:00",
+              "StopQuantity": 0,
+              "FlightNumber": "6991",
+              "ResBookDesigCode": "Y",
+              "JourneyDuration": "07:10",
+              "JourneyDurationPerMinute": 430,
+              "ConnectionTimePerMinute": 0,
+              "DepartureAirportLocationCode": "MHD",
+              "ArrivalAirportLocationCode": "THR",
+              "MarketingAirlineCode": "IV",
+              "CabinClassCode": 1,
+              "OperatingAirline": {
+                "Code": "IV",
+                "FlightNumber": "6991",
+                "Equipment": ""
+              },
+              "SeatsRemaining": 2,
+              "IsCharter": true,
+              "IsReturn": false,
+              "Baggage": null,
+              "TechnicalStops": []
+            }
+          ]
+        }
+      ],
+      "IsPassportNameWithSpace": false,
+      "FareFamily": null
+    },
+    {
+      "IsPassportMandatory": true,
+      "IsDestinationAddressMandatory": false,
+      "IsPassportIssueDateMandatory": false,
+      "DirectionInd": 1,
+      "NonRefundableType": 0,
+      "RefundMethod": 2,
+      "ValidatingAirlineCode": "IV",
+      "FareSourceCode": "393334646138333632326336346233373862626262663161666338636435346526323037302631363731313730",
+      "AirItineraryPricingInfo": {
+        "FareType": 2,
+        "ItinTotalFare": {
+          "BaseFare": 0.0,
+          "TotalFare": 9600000.0,
+          "TotalCommission": 0.0,
+          "TotalTax": 9600000.0,
+          "ServiceTax": 0.0,
+          "Currency": "IRR"
+        },
+        "PtcFareBreakdown": [
+          {
+            "PassengerFare": {
+              "BaseFare": 0.0,
+              "TotalFare": 9600000.0,
+              "Commission": 0.0,
+              "ServiceTax": 0.0,
+              "Taxes": [
+                {
+                  "Amount": 9600000.0,
+                  "Currency": "IRR"
+                }
+              ],
+              "Currency": "IRR"
+            },
+            "PassengerTypeQuantity": {
+              "PassengerType": 1,
+              "Quantity": 1
+            }
+          }
+        ],
+        "FareInfoes": []
+      },
+      "OriginDestinationOptions": [
+        {
+          "JourneyDurationPerMinute": 965,
+          "ConnectionTimePerMinute": 0,
+          "FlightSegments": [
+            {
+              "DepartureDateTime": "2022-03-03T07:55:00",
+              "ArrivalDateTime": "2022-03-04T00:00:00",
+              "StopQuantity": 0,
+              "FlightNumber": "025",
+              "ResBookDesigCode": "Y",
+              "JourneyDuration": "16:05",
+              "JourneyDurationPerMinute": 965,
+              "ConnectionTimePerMinute": 0,
+              "DepartureAirportLocationCode": "MHD",
+              "ArrivalAirportLocationCode": "THR",
+              "MarketingAirlineCode": "IV",
+              "CabinClassCode": 1,
+              "OperatingAirline": {
+                "Code": "IV",
+                "FlightNumber": "025",
+                "Equipment": ""
+              },
+              "SeatsRemaining": 4,
+              "IsCharter": true,
+              "IsReturn": false,
+              "Baggage": null,
+              "TechnicalStops": []
+            }
+          ]
+        }
+      ],
+      "IsPassportNameWithSpace": false,
+      "FareFamily": null
+    }
+  ]
+}
