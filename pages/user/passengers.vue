@@ -3,138 +3,42 @@
     <div class="container">
       <div class="row">
         <div class="col-md-2-5">
-          <Sidebar/>
+          <Sidebar />
         </div>
         <div class="col-md-9-5">
           <h1 class="theme-account-page-title">مسافران</h1>
-          <div class="row row-col-gap" data-gutter="20">
+          <div
+            v-for="(passenger, index) in Passengers"
+            :key="index"
+            class="row row-col-gap"
+            data-gutter="20"
+          >
+            <Passenger :passenger="passenger"/>
+            <Passenger :passenger="passenger"/>
+            <Passenger :passenger="passenger"/>
+            <Passenger :passenger="passenger"/>
+            <Passenger :passenger="passenger"/>
+            <Passenger :passenger="passenger"/>
+            <Passenger :passenger="passenger"/>
+            <Passenger :passenger="passenger"/>
+            <Passenger :passenger="passenger"/>
+            <Passenger :passenger="passenger"/>
             <div class="col-md-6">
               <div class="theme-account-traveler">
-                <i
-                  class="theme-account-traveler-icon"
-                  >جی</i
-                >
-                <div class="theme-account-traveler-body">
-                  <p class="theme-account-traveler-name">جان دو</p>
-                  <ul class="theme-account-traveler-details">
-                    <li>john_doe@gmail.com</li>
-                    <li>0912345678</li>
-                    <li>ایران</li>
-                  </ul>
-                  <ul class="theme-account-traveler-actions">
-                    <li>
-                      <a href="#">ویرایش کنید</a>
-                    </li>
-                    <li>
-                      <a href="#">حذف</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="theme-account-traveler">
-                <i
-                  class="theme-account-traveler-icon"
-                  >م</i
-                >
-                <div class="theme-account-traveler-body">
-                  <p class="theme-account-traveler-name">مایا اسمیت</p>
-                  <ul class="theme-account-traveler-details">
-                    <li>hello_maya95@yahoo.com</li>
-                    <li>0912345678</li>
-                    <li>ایران</li>
-                  </ul>
-                  <ul class="theme-account-traveler-actions">
-                    <li>
-                      <a href="#">ویرایش کنید</a>
-                    </li>
-                    <li>
-                      <a href="#">حذف</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="theme-account-traveler">
-                <i
-                  class="theme-account-traveler-icon"
-                  >تی</i
-                >
-                <div class="theme-account-traveler-body">
-                  <p class="theme-account-traveler-name">تامی جونز</p>
-                  <ul class="theme-account-traveler-details">
-                    <li>tommy@gmail.com</li>
-                    <li>0912345678</li>
-                    <li>ایران</li>
-                  </ul>
-                  <ul class="theme-account-traveler-actions">
-                    <li>
-                      <a href="#">ویرایش کنید</a>
-                    </li>
-                    <li>
-                      <a href="#">حذف</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="theme-account-traveler">
-                <i
-                  class="theme-account-traveler-icon"
-                  style="background-color: #bf00ff"
-                  >L</i
-                >
-                <div class="theme-account-traveler-body">
-                  <p class="theme-account-traveler-name">لوسی دو</p>
-                  <ul class="theme-account-traveler-details">
-                    <li>lucy_kitty_11@gmail.com</li>
-                    <li>0912345678</li>
-                    <li>ایران</li>
-                  </ul>
-                  <ul class="theme-account-traveler-actions">
-                    <li>
-                      <a href="#">ویرایش کنید</a>
-                    </li>
-                    <li>
-                      <a href="#">حذف</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="theme-account-traveler">
-                <i
-                  class="theme-account-traveler-icon"
-                  >دی</i
-                >
-                <div class="theme-account-traveler-body">
-                  <p class="theme-account-traveler-name">دنی وایت</p>
-                  <ul class="theme-account-traveler-details">
-                    <li>danny___white@gmail.com</li>
-                    <li>0912345678</li>
-                    <li>ایران</li>
-                  </ul>
-                  <ul class="theme-account-traveler-actions">
-                    <li>
-                      <a href="#">ویرایش کنید</a>
-                    </li>
-                    <li>
-                      <a href="#">حذف</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="theme-account-traveler">
-                <a class="theme-account-traveler-link-mask" href="#"></a>
+                <a
+                  
+                  class="theme-account-traveler-link-mask"
+                  @click="addField(passenger, Passengers)"
+                ></a>
                 <p class="theme-account-traveler-add-new">
                   + اضافه کردن مسافر جدید
                 </p>
+                <div
+                  id="AddNewTraveler"
+                  class="theme-payment-page-sections-item-new-extend"
+                >
+                  <AddPassenger />
+                </div>
               </div>
             </div>
           </div>
@@ -145,12 +49,36 @@
 </template>
 
 <script>
+// import AddPassenger from '~/components/Payment/AddPassenger.vue'
+import Passenger from '~/components/User/Passenger.vue'
 import Sidebar from '~/components/User/Sidebar'
 
 export default {
-  components:{
-    Sidebar
+  components: {
+    Sidebar,
+    Passenger,
+    // AddPassenger,
   },
   layout: 'profile',
+  data() {
+    return {
+      Passengers: [
+        {
+          fullname: 'as',
+          phonenumber: 'as',
+          national_id:'as',
+          birthday:''
+        },
+      ],
+    }
+  },
+  methods: {
+    addPassenger(value, fieldType) {
+      fieldType.push({ value: '' })
+    },
+    removePassenger(index, fieldType) {
+      fieldType.splice(index, 1)
+    },
+  },
 }
 </script>

@@ -123,11 +123,7 @@
               </button>
             </div>
             <div class="col-xs-8 col-md-6 parent-of-confirm-edit">
-              <button
-                class="btn btn-primary btn-block"
-              >
-                ثبت
-              </button>
+              <button class="btn btn-primary btn-block">ثبت</button>
             </div>
           </div>
         </div>
@@ -151,6 +147,21 @@ export default {
       passport_id: '',
       passport_issue: '',
       passport_expire: '',
+      passenger: [
+        {
+          latin_fname: '',
+          latin_lname: '',
+          persian_fname: '',
+          persian_lname: '',
+          sex: '',
+          national_id: '',
+          birthday_date: '',
+          birthday_country: '',
+          passport_id: '',
+          passport_issue: '',
+          passport_expire: '',
+        },
+      ],
     }
   },
   methods: {

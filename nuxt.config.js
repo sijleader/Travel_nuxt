@@ -9,7 +9,7 @@ export default {
   // server: {
   //   host: '192.168.1.150'
   // },
-  target: 'static',
+  // target: 'static',
   // ssr:false,
 
   head: {
@@ -67,6 +67,7 @@ export default {
     '@/assets/css/weather-icons.css',
     '@/assets/css/bootstrap.css',
     '@/assets/css/styles.css',
+    '@/assets/css/app.css',
   ],
 
   plugins: [
@@ -82,7 +83,7 @@ export default {
       src: '~/plugins/multiselect.js',
       mode: 'client',
     },
-    // '~/plugins/vuetab.js'
+    '~/plugins/v-select.js'
   ],
 
   components: true,

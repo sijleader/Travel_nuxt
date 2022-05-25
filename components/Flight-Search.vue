@@ -13,12 +13,28 @@
                   <i
                     class="theme-search-area-section-icon lin lin-location-pin"
                   ></i>
-                  <input
+                  <!-- <input
                     class="theme-search-area-section-input typeahead"
                     type="text"
                     placeholder="مبدا"
                     data-provide="typeahead"
-                  />
+                  /> -->
+                  <search-select
+                    v-model="selectedSoldier"
+                    :options="soldiers"
+                    :filter-function="applySearchFilter"
+                  ></search-select>
+
+                  <!-- <div>{{ selectedSoldier }}</div> -->
+                  <!-- <datalist id="suggestions">
+                    <option>First option</option>
+                    <option>Second Option</option>
+                  </datalist> -->
+                  <!-- <v-select
+                    v-model="user"
+                    :options="users_options"
+                  >
+                  </v-select> -->
                 </div>
               </div>
             </div>
@@ -146,12 +162,12 @@
                         <ul class="quantity-selector-controls">
                           <li class="quantity-selector-decrement">
                             <button
-                              @click="minusAdult"
                               :style="[
-                                this.adult <= 1
+                                adult <= 1
                                   ? { background: '#6ca5b6' }
                                   : { background: '#44b3d7' },
                               ]"
+                              @click="minusAdult"
                             >
                               -
                             </button>
@@ -170,12 +186,12 @@
                         <ul class="quantity-selector-controls">
                           <li class="quantity-selector-decrement">
                             <button
-                              @click="minusChild"
                               :style="[
-                                this.child <= 0
+                                child <= 0
                                   ? { background: '#6ca5b6' }
                                   : { background: '#44b3d7' },
                               ]"
+                              @click="minusChild"
                             >
                               -
                             </button>
@@ -194,12 +210,12 @@
                         <ul class="quantity-selector-controls">
                           <li class="quantity-selector-decrement">
                             <button
-                              @click="minusInfant"
                               :style="[
-                                this.infant <= 0
+                                infant <= 0
                                   ? { background: '#6ca5b6' }
                                   : { background: '#44b3d7' },
                               ]"
+                              @click="minusInfant"
                             >
                               -
                             </button>
@@ -279,12 +295,12 @@
                         <ul class="quantity-selector-controls">
                           <li class="quantity-selector-decrement">
                             <button
-                              @click="minusAdult"
                               :style="[
-                                this.adult <= 1
+                                adult <= 1
                                   ? { background: '#6ca5b6' }
                                   : { background: '#44b3d7' },
                               ]"
+                              @click="minusAdult"
                             >
                               -
                             </button>
@@ -303,12 +319,12 @@
                         <ul class="quantity-selector-controls">
                           <li class="quantity-selector-decrement">
                             <button
-                              @click="minusChild"
                               :style="[
-                                this.child <= 0
+                                child <= 0
                                   ? { background: '#6ca5b6' }
                                   : { background: '#44b3d7' },
                               ]"
+                              @click="minusChild"
                             >
                               -
                             </button>
@@ -327,12 +343,12 @@
                         <ul class="quantity-selector-controls">
                           <li class="quantity-selector-decrement">
                             <button
-                              @click="minusInfant"
                               :style="[
-                                this.infant <= 0
+                                infant <= 0
                                   ? { background: '#6ca5b6' }
                                   : { background: '#44b3d7' },
                               ]"
+                              @click="minusInfant"
                             >
                               -
                             </button>
@@ -378,7 +394,12 @@
 </template>
 
 <script>
+import SearchSelect from "~/components/test/SearchSelect.vue"
+
 export default {
+  components: {
+    SearchSelect
+  },
   data() {
     return {
       start: '',
@@ -389,6 +410,28 @@ export default {
       child: 0,
       infant: 0,
       selected: 'one-way',
+      user: '',
+      country: 0,
+      users_options: [
+        'Yogesh singh',
+        'Sunil singh',
+        'Sonarika bhadoria',
+        'Akilesh sahu',
+        'Mayank patidar',
+      ],
+      selectedSoldier: null,
+      search: "",
+      soldiers: [
+        "1LT Lakes, Dale",
+        "1LT Ball, Michael",
+        "CW3 Latane, Paul",
+        "SFC Busby, Ryan",
+        "SSG Salinas, Ricky",
+        "SSG Hochheimer, Steven",
+        "SSG Fossett, Matt",
+        "SSG Sabatini, Jesse",
+        "SSG jackson, Jeremy"
+      ]
     }
   },
   computed: {
@@ -430,6 +473,11 @@ export default {
     toggle() {
       this.isOpen = !this.isOpen
     },
+    applySearchFilter(search, soldiers) {
+      return soldiers.filter((soldier) =>
+        soldier.toLowerCase().startsWith(search.toLowerCase())
+      )
+    }
   },
 }
 </script>
