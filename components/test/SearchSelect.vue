@@ -1,5 +1,5 @@
 <template>
-  <on-click-outside :do="close">
+  <on-click-outside>
     <div :class="{ 'is-active': isOpen }">
       <button
         ref="button"
@@ -16,7 +16,6 @@
           ref="search"
           v-model="search"
           class="search-select-search"
-          @keydown.esc="close"
           @keydown.up="highlightPrev"
           @keydown.down="highlightNext"
           @keydown.enter.prevent="selectHighlighted"
@@ -92,19 +91,19 @@ export default {
         this.popper.scheduleUpdate()
       }
     },
-    close() {
-      if (!this.isOpen) {
-        return
-      }
-      this.isOpen = false
-      this.$refs.button.focus()
-    },
-    select(option) {
-      this.$emit('input', option)
-      this.search = ''
-      this.highlightedIndex = 0
-      this.close()
-    },
+    // close() {
+    //   if (!this.isOpen) {
+    //     return
+    //   }
+    //   this.isOpen = false
+    //   this.$refs.button.focus()
+    // },
+    // select(option) {
+    //   this.$emit('input', option)
+    //   this.search = ''
+    //   this.highlightedIndex = 0
+    //   this.close()
+    // },
     selectHighlighted() {
       this.select(this.filteredOptions[this.highlightedIndex])
     },
