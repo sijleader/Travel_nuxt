@@ -10,9 +10,6 @@
                 class="theme-search-area-section first theme-search-area-section-line"
               >
                 <div class="theme-search-area-section-inner">
-                  <i
-                    class="theme-search-area-section-icon lin lin-location-pin"
-                  ></i>
                   <!-- <input
                     class="theme-search-area-section-input typeahead"
                     type="text"
@@ -20,21 +17,10 @@
                     data-provide="typeahead"
                   /> -->
                   <search-select
-                    v-model="selectedSoldier"
-                    :options="soldiers"
+                    v-model="departure"
+                    :options="cities"
                     :filter-function="applySearchFilter"
                   ></search-select>
-
-                  <!-- <div>{{ selectedSoldier }}</div> -->
-                  <!-- <datalist id="suggestions">
-                    <option>First option</option>
-                    <option>Second Option</option>
-                  </datalist> -->
-                  <!-- <v-select
-                    v-model="user"
-                    :options="users_options"
-                  >
-                  </v-select> -->
                 </div>
               </div>
             </div>
@@ -46,12 +32,17 @@
                   <i
                     class="theme-search-area-section-icon lin lin-location-pin"
                   ></i>
-                  <input
+                  <!-- <input
                     class="theme-search-area-section-input typeahead"
                     type="text"
                     placeholder="مقصد"
                     data-provide="typeahead"
-                  />
+                  /> -->
+                  <search-select
+                    v-model="destination"
+                    :options="cities"
+                    :filter-function="applySearchFilter"
+                  ></search-select>
                 </div>
               </div>
             </div>
@@ -59,9 +50,11 @@
         </div>
         <!-- Choose date of depart and return -->
         <div class="col-md-6">
-          <div v-if="selected == 'two-way'" class="row" data-gutter="30">
-            <!-- depart -->
-            <div class="col-md-4">
+          <div class="row" data-gutter="30">
+            <div
+              class=""
+              :class="[selected == 'two-way' ? 'col-md-4' : 'col-md-6']"
+            >
               <div
                 class="theme-search-area-section theme-search-area-section-line"
               >
@@ -99,8 +92,10 @@
                 </div>
               </div>
             </div>
-            <!-- return -->
-            <div class="col-md-4">
+            <div
+              class=""
+              :class="[selected == 'two-way' ? 'col-md-4' : 'hidden']"
+            >
               <div
                 class="theme-search-area-section theme-search-area-section-line"
               >
@@ -141,141 +136,10 @@
                 </div>
               </div>
             </div>
-            <!-- passengers -->
-            <div class="col-md-4">
-              <div
-                class="theme-search-area-section theme-search-area-section-line quantity-selector"
-              >
-                <div class="theme-search-area-section-inner">
-                  <i class="theme-search-area-section-icon lin lin-people"></i>
-
-                  <button
-                    class="theme-search-area-section-input"
-                    @click="toggle"
-                  >
-                    {{ totalPassengers }} مسافر
-                  </button>
-                  <div v-show="isOpen" class="content">
-                    <div class="quantity-selector-box show">
-                      <div class="quantity-selector-inner">
-                        <p class="quantity-selector-title">بزرگسال</p>
-                        <ul class="quantity-selector-controls">
-                          <li class="quantity-selector-decrement">
-                            <button
-                              :style="[
-                                adult <= 1
-                                  ? { background: '#6ca5b6' }
-                                  : { background: '#44b3d7' },
-                              ]"
-                              @click="minusAdult"
-                            >
-                              -
-                            </button>
-                          </li>
-                          <li class="quantity-selector-current">
-                            {{ adult }}
-                          </li>
-                          <li class="quantity-selector-increment">
-                            <button @click="addAdult">+</button>
-                          </li>
-                        </ul>
-                      </div>
-                      <hr />
-                      <div class="quantity-selector-inner">
-                        <p class="quantity-selector-title">کودک</p>
-                        <ul class="quantity-selector-controls">
-                          <li class="quantity-selector-decrement">
-                            <button
-                              :style="[
-                                child <= 0
-                                  ? { background: '#6ca5b6' }
-                                  : { background: '#44b3d7' },
-                              ]"
-                              @click="minusChild"
-                            >
-                              -
-                            </button>
-                          </li>
-                          <li class="quantity-selector-current">
-                            {{ child }}
-                          </li>
-                          <li class="quantity-selector-increment">
-                            <button @click="addChild">+</button>
-                          </li>
-                        </ul>
-                      </div>
-                      <hr />
-                      <div class="quantity-selector-inner">
-                        <p class="quantity-selector-title">نوزاد</p>
-                        <ul class="quantity-selector-controls">
-                          <li class="quantity-selector-decrement">
-                            <button
-                              :style="[
-                                infant <= 0
-                                  ? { background: '#6ca5b6' }
-                                  : { background: '#44b3d7' },
-                              ]"
-                              @click="minusInfant"
-                            >
-                              -
-                            </button>
-                          </li>
-                          <li class="quantity-selector-current">
-                            {{ infant }}
-                          </li>
-                          <li class="quantity-selector-increment">
-                            <button @click="addInfant">+</button>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div v-else class="row" data-gutter="30">
-            <!-- depart -->
-            <div class="col-md-6">
-              <div
-                class="theme-search-area-section theme-search-area-section-line"
-              >
-                <div class="theme-search-area-section-inner">
-                  <i
-                    class="theme-search-area-section-icon lin lin-calendar"
-                  ></i>
-                  <input
-                    class="theme-search-area-section-input datePickerStart _mob-h depart-input-desktop"
-                    value=""
-                    type="text"
-                    placeholder="تاریخ رفت"
-                  />
-                  <date-picker
-                    v-model="start"
-                    simple
-                    :min="new Date()"
-                    format="YYYY-MM-DD"
-                    display-format="jYYYY-jMM-jDD"
-                    custom-input=".depart-input-desktop"
-                  />
-                  <input
-                    class="theme-search-area-section-input _desk-h mobile-picker depart-input-mobile"
-                    placeholder="تاریخ رفت"
-                    type="text"
-                  />
-                  <date-picker
-                    v-model="start"
-                    simple
-                    :min="new Date()"
-                    format="YYYY-MM-DD"
-                    display-format="jYYYY-jMM-jDD"
-                    custom-input=".depart-input-mobile"
-                  />
-                </div>
-              </div>
-            </div>
-            <!-- passengers -->
-            <div class="col-md-6">
+            <div
+              class=""
+              :class="[selected == 'two-way' ? 'col-md-4' : 'col-md-6']"
+            >
               <div
                 class="theme-search-area-section theme-search-area-section-line quantity-selector"
               >
@@ -394,12 +258,14 @@
 </template>
 
 <script>
-import SearchSelect from "~/components/test/SearchSelect.vue"
-
+import SearchSelect from '~/components/test/SearchSelect.vue'
+// import Popper from 'popper.js'
+// import OnClickOutside from '~/components/test/OnClickOutside.vue'
 export default {
   components: {
-    SearchSelect
+    SearchSelect,
   },
+  props: ['options'],
   data() {
     return {
       start: '',
@@ -411,27 +277,20 @@ export default {
       infant: 0,
       selected: 'one-way',
       user: '',
-      country: 0,
-      users_options: [
-        'Yogesh singh',
-        'Sunil singh',
-        'Sonarika bhadoria',
-        'Akilesh sahu',
-        'Mayank patidar',
+      departure: null,
+      destination: null,
+      search: '',
+      cities: [
+        '1LT Lakes, Dale',
+        '1LT Ball, Michael',
+        'CW3 Latane, Paul',
+        'SFC Busby, Ryan',
+        'SSG Salinas, Ricky',
+        'SSG Hochheimer, Steven',
+        'SSG Fossett, Matt',
+        'SSG Sabatini, Jesse',
+        'SSG jackson, Jeremy',
       ],
-      selectedSoldier: null,
-      search: "",
-      soldiers: [
-        "1LT Lakes, Dale",
-        "1LT Ball, Michael",
-        "CW3 Latane, Paul",
-        "SFC Busby, Ryan",
-        "SSG Salinas, Ricky",
-        "SSG Hochheimer, Steven",
-        "SSG Fossett, Matt",
-        "SSG Sabatini, Jesse",
-        "SSG jackson, Jeremy"
-      ]
     }
   },
   computed: {
@@ -473,11 +332,12 @@ export default {
     toggle() {
       this.isOpen = !this.isOpen
     },
-    applySearchFilter(search, soldiers) {
-      return soldiers.filter((soldier) =>
-        soldier.toLowerCase().startsWith(search.toLowerCase())
+    applySearchFilter(search, cities) {
+      const sols = this.cities
+      return sols.filter((city) =>
+        city.toLowerCase().includes(search.toLowerCase())
       )
-    }
+    },
   },
 }
 </script>

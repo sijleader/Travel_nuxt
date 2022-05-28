@@ -67,7 +67,7 @@ export default {
     '@/assets/css/weather-icons.css',
     '@/assets/css/bootstrap.css',
     '@/assets/css/styles.css',
-    '@/assets/css/app.css',
+    // '@/assets/css/app.css',
   ],
 
   plugins: [

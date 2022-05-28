@@ -14,6 +14,7 @@
             data-gutter="20"
           >
             <Passenger :passenger="passenger"/>
+            <!-- <Passenger :passenger="passenger"/>
             <Passenger :passenger="passenger"/>
             <Passenger :passenger="passenger"/>
             <Passenger :passenger="passenger"/>
@@ -21,8 +22,7 @@
             <Passenger :passenger="passenger"/>
             <Passenger :passenger="passenger"/>
             <Passenger :passenger="passenger"/>
-            <Passenger :passenger="passenger"/>
-            <Passenger :passenger="passenger"/>
+            <Passenger :passenger="passenger"/> -->
             <div class="col-md-6">
               <div class="theme-account-traveler">
                 <a

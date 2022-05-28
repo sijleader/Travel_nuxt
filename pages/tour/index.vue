@@ -38,8 +38,8 @@
                         <div class="banner-mask"></div>
                         <a class="banner-link" href="#"></a>
                         <div class="banner-caption _pos-v-c _ta-c _w-f">
-                          <h5 class="banner-title">نیویورک</h5>
-                          <p class="banner-subtitle">ایران</p>
+                          <h5 class="banner-title">تورهای قاره اروپا</h5>
+                          <!-- <p class="banner-subtitle">ایران</p> -->
                         </div>
                       </div>
                     </div>
@@ -51,12 +51,12 @@
                         <div class="banner-mask"></div>
                         <a class="banner-link" href="#"></a>
                         <div class="banner-caption _pos-v-c _ta-c _w-f">
-                          <h5 class="banner-title">لندن</h5>
-                          <p class="banner-subtitle">ایران</p>
+                          <h5 class="banner-title">تورهای قاره آسیا</h5>
+                          <!-- <p class="banner-subtitle">ایران</p> -->
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div
                         class="banner _h-33vh _br-4 banner-animate banner-animate-zoom-in banner-animate-very-slow banner-animate-mask-out"
                       >
@@ -64,12 +64,12 @@
                         <div class="banner-mask"></div>
                         <a class="banner-link" href="#"></a>
                         <div class="banner-caption _pos-v-c _ta-c _w-f">
-                          <h5 class="banner-title">مسکو</h5>
-                          <p class="banner-subtitle">روسیه</p>
+                          <h5 class="banner-title">تورهای قاره آفریقا</h5>
+                          <!-- <p class="banner-subtitle">روسیه</p> -->
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div
                         class="banner _h-33vh _br-4 banner-animate banner-animate-zoom-in banner-animate-very-slow banner-animate-mask-out"
                       >
@@ -77,12 +77,12 @@
                         <div class="banner-mask"></div>
                         <a class="banner-link" href="#"></a>
                         <div class="banner-caption _pos-v-c _ta-c _w-f">
-                          <h5 class="banner-title">وینس</h5>
-                          <p class="banner-subtitle">ایتالیا</p>
+                          <h5 class="banner-title">تورهای قاره آمریکا</h5>
+                          <!-- <p class="banner-subtitle">ایتالیا</p> -->
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div
                         class="banner _h-33vh _br-4 banner-animate banner-animate-zoom-in banner-animate-very-slow banner-animate-mask-out"
                       >
@@ -90,12 +90,12 @@
                         <div class="banner-mask"></div>
                         <a class="banner-link" href="#"></a>
                         <div class="banner-caption _pos-v-c _ta-c _w-f">
-                          <h5 class="banner-title">بالی</h5>
-                          <p class="banner-subtitle">اندونزی</p>
+                          <h5 class="banner-title">تورهای استرالیا</h5>
+                          <!-- <p class="banner-subtitle">اندونزی</p> -->
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                       <div
                         class="banner _h-33vh _br-4 banner-animate banner-animate-zoom-in banner-animate-very-slow banner-animate-mask-out"
                       >
@@ -107,7 +107,7 @@
                           <p class="banner-subtitle">ژاپن</p>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>

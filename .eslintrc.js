@@ -16,6 +16,9 @@ module.exports = {
     'vue/no-multiple-template-root': 'off',
     "object-shorthand": 0,
     "object-literal-shorthand": 0,
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "stylelint-plugin-stylus/standard":"always"
     // "object-literal-shorthand": [true, "never"]
     // "object-literal-shorthand": [true, {"property": "never"}]
   },

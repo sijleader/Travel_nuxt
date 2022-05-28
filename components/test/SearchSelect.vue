@@ -1,23 +1,16 @@
 <template>
   <on-click-outside :do="close">
-    <div class="search-select" :class="{ 'is-active': isOpen }" :do="close">
+    <div :class="{ 'is-active': isOpen }">
       <button
         ref="button"
-        type="button"
-        class="theme-search-area-section-input typeahead"
+        type="text"
+        class="theme-search-area-section-input"
         @click="open"
       >
-        <span v-if="value !== null">{{ value }}</span>
-        <span v-else class="search-select-placeholder">مبدا </span>
+        <i class="theme-search-area-section-icon lin lin-location-pin"></i>
+        <span v-if="value !== null" class="content">{{ value }}</span>
+        <span v-else class="content">مبدا</span>
       </button>
-      <!-- <input
-        class="theme-search-area-section-input typeahead"
-        type="text"
-        placeholder="مبدا"
-        @click.prevent="open"
-      /> -->
-      <!-- <span v-if="value !== null">{{ value }}</span>
-      <span v-else class="search-select-placeholder">مبدا </span> -->
       <div v-show="isOpen" ref="dropdown" class="search-select-dropdown">
         <input
           ref="search"
@@ -67,6 +60,7 @@ export default {
       isOpen: false,
       search: '',
       highlightedIndex: 0,
+      // placeholder:'مبدا'
     }
   },
   computed: {
@@ -74,9 +68,9 @@ export default {
       return this.filterFunction(this.search, this.options)
     },
   },
-  beforeDestroy() {
-    this.popper.remove()
-  },
+  // beforeDestroy() {
+  //   this.popper.remove()
+  // },
   methods: {
     open() {
       if (this.isOpen) {
@@ -144,3 +138,49 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.search-select-dropdown {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  position: absolute;
+  right: 0;
+  left: 0;
+  background-color: #3d4852;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 4px 0 rgba(#000, 0.1);
+  z-index: 50;
+}
+
+.search-select-search {
+  display: block;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background-color: #606f7b;
+  color: #fff;
+  border-radius: 0.25rem;
+}
+
+.search-select-search:focus {
+  outline: 0;
+}
+
+.search-select-options {
+  list-style: none;
+  padding: 0;
+  position: relative;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: 14rem;
+}
+
+.search-select-empty {
+  padding: 0.5rem 0.75rem;
+  color: #b8c2cc;
+}
+</style>
+<!-- <style scoped>
+@import url('~/assets/css/app.css');
+</style> -->
