@@ -9,7 +9,7 @@ export default {
   // server: {
   //   host: '192.168.1.150'
   // },
-  // target: 'static',
+  target: 'static',
   // ssr:false,
 
   head: {
