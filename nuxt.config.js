@@ -208,6 +208,9 @@ export default {
   content: {},
 
   build: {
+    babel: {
+      compact: true,
+     },
     // plugins: [
     //   new webpack.ProvidePlugin({
     //     $: 'jquery',
