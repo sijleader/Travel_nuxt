@@ -79,10 +79,10 @@ export default {
       src: '~/plugins/modal.js',
       mode: 'client',
     },
-    {
-      src: '~/plugins/multiselect.js',
-      mode: 'client',
-    },
+    // {
+    //   src: '~/plugins/multiselect.js',
+    //   mode: 'client',
+    // },
     '~/plugins/v-select.js'
   ],
 
@@ -211,6 +211,13 @@ export default {
     babel: {
       compact: true,
      },
+     extend (config) {
+      config.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: "javascript/auto"
+      })
+    }
     // plugins: [
     //   new webpack.ProvidePlugin({
     //     $: 'jquery',
