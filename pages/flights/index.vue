@@ -70,15 +70,21 @@
                 <li>
                   <a href="#"
                     >قیمت
-                    <span>زیاد ← پایین</span>
+                    <span>زیاد ← کم</span>
                   </a>
                 </li>
-                <li class="active">
+                <li>
+                  <a href="#"
+                    >قیمت
+                    <span>کم ← زیاد</span>
+                  </a>
+                </li>
+                <!-- <li class="active">
                   <a href="#"
                     >مدت زمان
                     <span>طولانی ← کوتاه</span>
                   </a>
-                </li>
+                </li> -->
                 <li>
                   <a href="#"
                     >توصیه
@@ -91,8 +97,14 @@
                     <span>A ← Z</span>
                   </a>
                 </li>
+                <li>
+                  <a href="#"
+                    >مدت زمان
+                    <span>طولانی ← کوتاه</span>
+                  </a>
+                </li>
               </ul>
-              <div class="dropdown theme-search-results-sort-alt">
+              <!-- <div class="dropdown theme-search-results-sort-alt">
                 <a
                   id="dropdownMenu"
                   data-bs-toggle="dropdown"
@@ -117,7 +129,7 @@
                     <a href="#">فرود برگشت</a>
                   </li>
                 </ul>
-              </div>
+              </div> -->
             </div>
             <div class="theme-search-results-sort-select _desk-h">
               <select>

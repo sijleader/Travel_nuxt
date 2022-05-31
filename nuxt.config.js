@@ -83,7 +83,8 @@ export default {
     //   src: '~/plugins/multiselect.js',
     //   mode: 'client',
     // },
-    '~/plugins/v-select.js'
+    '~/plugins/v-select.js',
+    { src: '@/plugins/vue-html2pdf', mode: 'client' }
   ],
 
   components: true,
