@@ -18,7 +18,7 @@ module.exports = {
     "object-literal-shorthand": 0,
     "property-no-vendor-prefix": 0,
     "value-no-vendor-prefix": 0,
-    "stylelint-plugin-stylus/standard":"always"
+    "stylelint-plugin-stylus/standard":0
     // "object-literal-shorthand": [true, "never"]
     // "object-literal-shorthand": [true, {"property": "never"}]
   },

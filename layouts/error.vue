@@ -21,8 +21,9 @@ export default {
       if (this.error.statusCode === 404) {
         return error404
       }
-      // catch everything else
-      return error500
+      // else if (this.error.statusCode === 500) {
+        return error500
+      // }
     },
   },
 }

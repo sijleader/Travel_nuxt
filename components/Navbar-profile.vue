@@ -18,9 +18,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">
+          <nuxt-link class="navbar-brand" to="/">
             <img src="~/static/img/logo.png" />
-          </a>
+          </nuxt-link>
         </div>
         <div id="navbar-main" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
