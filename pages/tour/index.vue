@@ -156,9 +156,7 @@
     </div> -->
     <div class="theme-hero-area _h-desk-100vh">
       <div class="theme-hero-area-bg-wrap">
-        <div
-          class="theme-hero-area-bg area-bg"
-        ></div>
+        <div class="theme-hero-area-bg area-bg"></div>
         <div class="theme-hero-area-mask theme-hero-area-mask-strong"></div>
         <div
           class="theme-hero-area-bg-pattern theme-hero-area-bg-pattern-strong bg-pattern"
@@ -176,127 +174,11 @@
                   560000+ تجربه سفر از سراسر جهان را سفر کنید
                 </p>
               </div>
-              <div class="theme-search-area-form" id="hero-search-form">
-                <div class="row" data-gutter="none">
-                  <div class="col-md-4">
-                    <div
-                      class="theme-search-area-section first theme-search-area-section-curved theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr"
-                    >
-                      <div class="theme-search-area-section-inner">
-                        <i
-                          class="theme-search-area-section-icon lin lin-location-pin"
-                        ></i>
-                        <input
-                          class="theme-search-area-section-input typeahead"
-                          type="text"
-                          placeholder="مقصد"
-                          data-provide="typeahead"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-7">
-                    <div class="row" data-gutter="none">
-                      <div class="col-md-4">
-                        <div
-                          class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr"
-                        >
-                          <div class="theme-search-area-section-inner">
-                            <i
-                              class="theme-search-area-section-icon lin lin-calendar"
-                            ></i>
-                            <input
-                              class="theme-search-area-section-input datePickerStart _mob-h"
-                              value="تاریخ رفت"
-                              id="datepicker-check-in"
-                              type="text"
-                              placeholder="تاریخ رفت"
-                            />
-                            <input
-                              class="theme-search-area-section-input _desk-h mobile-picker"
-                              value="1400-06-27"
-                              type="date"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div
-                          class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr"
-                        >
-                          <div class="theme-search-area-section-inner">
-                            <i
-                              class="theme-search-area-section-icon lin lin-calendar"
-                            ></i>
-                            <input
-                              class="theme-search-area-section-input datePickerEnd _mob-h"
-                              value=""
-                              type="text"
-                              placeholder="تاریخ برگشت"
-                              id="datepicker-check-out"
-                            />
-                            <input
-                              class="theme-search-area-section-input _desk-h mobile-picker"
-                              value="1400-07-02"
-                              type="date"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div
-                          class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector"
-                          data-increment="مهمان"
-                        >
-                          <div class="theme-search-area-section-inner">
-                            <i
-                              class="theme-search-area-section-icon lin lin-people"
-                            ></i>
-                            <input
-                              class="theme-search-area-section-input"
-                              value="2 مهمان"
-                              type="text"
-                            />
-                            <div
-                              class="quantity-selector-box"
-                              id="ExpSearch مهمان"
-                            >
-                              <div class="quantity-selector-inner">
-                                <p class="quantity-selector-title">مهمان</p>
-                                <ul class="quantity-selector-controls">
-                                  <li class="quantity-selector-decrement">
-                                    <a href="#">-</a>
-                                  </li>
-                                  <li class="quantity-selector-current">1</li>
-                                  <li class="quantity-selector-increment">
-                                    <a href="#">+</a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-1">
-                    <button
-                      class="theme-search-area-submit _mt-0 theme-search-area-submit-glow theme-search-area-submit-curved theme-search-area-submit-no-border"
-                    >
-                      <i
-                        class="theme-search-area-submit-icon fa fa-angle-left"
-                      ></i>
-                      <span class="_desk-h">جستجو</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
             </div>
-            
             <div class="_pt-60">
-              <div class="row row-col-mob-gap" data-gutter="60">
-                <div class="col-md-3">
-                  <div class="feature">
+              <div class="row row-col-mob-gap">
+                <div class="col-sm-3 col-xs-6">
+                  <div class="feature feature-center">
                     <i
                       class="feature-icon _ml-20 feature-icon-white feature-icon-xl fa fa-trophy"
                     ></i>
@@ -309,8 +191,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-3">
-                  <div class="feature">
+                <div class="col-sm-3 col-xs-6">
+                  <div class="feature feature-center">
                     <i
                       class="feature-icon _ml-20 feature-icon-white feature-icon-xl fa fa-credit-card"
                     ></i>
@@ -323,8 +205,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-3">
-                  <div class="feature">
+                <div class="col-sm-3 col-xs-6">
+                  <div class="feature feature-center">
                     <i
                       class="feature-icon _ml-20 feature-icon-white feature-icon-xl fa fa-users"
                     ></i>
@@ -336,8 +218,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-3">
-                  <div class="feature">
+                <div class="col-sm-3 col-xs-6">
+                  <div class="feature feature-center">
                     <i
                       class="feature-icon _ml-20 feature-icon-white feature-icon-xl fa fa-calendar"
                     ></i>
@@ -356,7 +238,7 @@
         </div>
       </div>
     </div>
-    
+
     <div
       class="theme-page-section theme-page-section-xl theme-page-section-gray"
     >
@@ -368,7 +250,7 @@
           </p>
         </div>
         <div class="row row-col-gap" data-gutter="10">
-          <div class="col-md-3">
+          <div class="col-sm-3 col-xs-6">
             <div
               class="banner _br-4 banner-sqr banner-animate banner-animate-zoom-in banner-animate-very-slow banner-animate-mask-out"
             >
@@ -384,7 +266,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-sm-3 col-xs-6">
             <div
               class="banner _br-4 banner-sqr banner-animate banner-animate-zoom-in banner-animate-very-slow banner-animate-mask-out"
             >
@@ -400,7 +282,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-sm-3 col-xs-6">
             <div
               class="banner _br-4 banner-sqr banner-animate banner-animate-zoom-in banner-animate-very-slow banner-animate-mask-out"
             >
@@ -416,7 +298,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-sm-3 col-xs-6">
             <div
               class="banner _br-4 banner-sqr banner-animate banner-animate-zoom-in banner-animate-very-slow banner-animate-mask-out"
             >
@@ -454,12 +336,12 @@
         </div>
       </div>
     </div>
-        <div
+    <div
       class="theme-page-section theme-page-section-xxl theme-page-section-gray"
     >
       <div class="container">
         <div class="row row-col-mob-gap" data-gutter="60">
-          <div class="col-md-3">
+          <div class="col-sm-3 col-xs-6">
             <div class="feature feature-white feature-center">
               <i
                 class="feature-icon feature-icon-line feature-icon-box feature-icon-round lin lin-globe-alt"
@@ -470,7 +352,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-sm-3 col-xs-6">
             <div class="feature feature-white feature-center">
               <i
                 class="feature-icon feature-icon-line feature-icon-box feature-icon-round lin lin-badge"
@@ -483,7 +365,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-sm-3 col-xs-6">
             <div class="feature feature-white feature-center">
               <i
                 class="feature-icon feature-icon-line feature-icon-box feature-icon-round lin lin-wallet"
@@ -496,7 +378,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-sm-3 col-xs-6">
             <div class="feature feature-white feature-center">
               <i
                 class="feature-icon feature-icon-line feature-icon-box feature-icon-round lin lin-earphones-alt"
