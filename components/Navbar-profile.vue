@@ -19,7 +19,7 @@
             <span class="icon-bar"></span>
           </button>
           <nuxt-link class="navbar-brand" to="/">
-            <img src="~/static/img/logo.png" />
+            <img src="/navbar-logo-partvanak.png" />
           </nuxt-link>
         </div>
         <div id="navbar-main" class="collapse navbar-collapse">
