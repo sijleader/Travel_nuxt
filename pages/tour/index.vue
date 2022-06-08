@@ -1,166 +1,12 @@
 <template>
   <div>
-    <!-- <div class="theme-hero-area _h-desk-100vh"> -->
-    <!-- <div class="theme-hero-area theme-hero-area-half">
-      <div class="theme-hero-area-bg-wrap">
-        <div class="theme-hero-area-bg area-bg" id="hero-banner"></div>
-        <div
-          class="theme-hero-area-bg-pattern theme-hero-area-bg-pattern-strong bg-pattern"
-        ></div>
-        <div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
-        <div
-          class="blur-area"
-          data-bg-area="#hero-banner"
-          data-blur-area="#hero-search-form"
-          data-blur="20"
-        ></div>
-      </div>
-      <div class="theme-hero-area-body _pos-desk-v-c _w-f _pv-mob-60">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-              <div
-                class="theme-search-area _pt-desk-200 theme-search-area-stacked theme-search-area-white"
-              >
-                <div class="theme-search-area-header _ta-c">
-                  <h1 class="theme-search-area-title">جستجو برای تجربیات</h1>
-                  <p class="theme-search-area-subtitle">
-                    صدها سایت مسافرتی را همزمان جستجو کنید
-                  </p>
-                </div>
-                <div class="theme-search-area-form" id="hero-search-form">
-                  <div class="row" data-gutter="none">
-                    <div class="col-md-4">
-                      <div
-                        class="theme-search-area-section first theme-search-area-section-curved"
-                      >
-                        <div class="theme-search-area-section-inner">
-                          <i
-                            class="theme-search-area-section-icon lin lin-location-pin"
-                          ></i>
-                          <input
-                            class="theme-search-area-section-input typeahead"
-                            type="text"
-                            placeholder="مقصد"
-                            data-provide="typeahead"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="row" data-gutter="none">
-                        <div class="col-md-4">
-                          <div
-                            class="theme-search-area-section theme-search-area-section-curved"
-                          >
-                            <div class="theme-search-area-section-inner">
-                              <i
-                                class="theme-search-area-section-icon lin lin-calendar"
-                              ></i>
-                              <input
-                                class="theme-search-area-section-input datePickerStart _mob-h"
-                                value="تاریخ رفت"
-                                id="datepicker-check-in"
-                                type="text"
-                                placeholder="تاریخ رفت"
-                              />
-                              <input
-                                class="theme-search-area-section-input _desk-h mobile-picker"
-                                value="1400-06-27"
-                                type="date"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div
-                            class="theme-search-area-section theme-search-area-section-curved"
-                          >
-                            <div class="theme-search-area-section-inner">
-                              <i
-                                class="theme-search-area-section-icon lin lin-calendar"
-                              ></i>
-                              <input
-                                class="theme-search-area-section-input datePickerEnd _mob-h"
-                                value=""
-                                type="text"
-                                placeholder="تاریخ برگشت"
-                                id="datepicker-check-out"
-                              />
-                              <input
-                                class="theme-search-area-section-input _desk-h mobile-picker"
-                                value="1400-07-02"
-                                type="date"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div
-                            class="theme-search-area-section theme-search-area-section-curved quantity-selector"
-                            data-increment="مهمان"
-                          >
-                            <div class="theme-search-area-section-inner">
-                              <i
-                                class="theme-search-area-section-icon lin lin-people"
-                              ></i>
-                              <input
-                                class="theme-search-area-section-input"
-                                value="2 مهمان"
-                                type="text"
-                              />
-                              <div
-                                class="quantity-selector-box"
-                                id="ExpSearch مهمان"
-                              >
-                                <div class="quantity-selector-inner">
-                                  <p class="quantity-selector-title">مهمان</p>
-                                  <ul class="quantity-selector-controls">
-                                    <li class="quantity-selector-decrement">
-                                      <a href="#">-</a>
-                                    </li>
-                                    <li class="quantity-selector-current">1</li>
-                                    <li class="quantity-selector-increment">
-                                      <a href="#">+</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-1">
-                      <button
-                        class="theme-search-area-submit _mt-0 theme-search-area-submit-glow theme-search-area-submit-curved theme-search-area-submit-primary"
-                      >
-                        <i
-                          class="theme-search-area-submit-icon fa fa-angle-left"
-                        ></i>
-                        <span class="_desk-h">جستجو</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="theme-page-section _pb-0 theme-page-section-xl">
-                <div class="theme-inline-slider row" data-gutter="10"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <div class="theme-hero-area _h-desk-100vh">
       <div class="theme-hero-area-bg-wrap">
         <div class="theme-hero-area-bg area-bg"></div>
         <div class="theme-hero-area-mask theme-hero-area-mask-strong"></div>
-        <div
+        <!-- <div
           class="theme-hero-area-bg-pattern theme-hero-area-bg-pattern-strong bg-pattern"
-        ></div>
+        ></div> -->
       </div>
       <div class="theme-hero-area-body">
         <div class="container">
@@ -238,7 +84,6 @@
         </div>
       </div>
     </div>
-
     <div
       class="theme-page-section theme-page-section-xl theme-page-section-gray"
     >
@@ -404,7 +249,7 @@ export default {
 
 <style scoped>
 .area-bg {
-  background-image: url('~/static/img/bve-xl2eqku_1500x800.jpg');
+  background-image: url('~/static/tour-banner-partvanak.png');
 }
 
 .bg-pattern {
@@ -412,7 +257,7 @@ export default {
 }
 
 .hero-bg {
-  background-image: url('~/static/img/architecture-bridge-buildings-calm-waters-427679_1500x800.jpg');
+  background-image: url('~/static/support-team-partvanak.png');
 }
 
 .b1 {

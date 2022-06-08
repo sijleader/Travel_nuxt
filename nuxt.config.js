@@ -21,7 +21,8 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/png', href: '/favicon-partvanak.png' },
+      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       // {
       //   rel: 'stylesheet',
       //   href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700',
@@ -84,7 +85,8 @@ export default {
     //   mode: 'client',
     // },
     '~/plugins/v-select.js',
-    { src: '@/plugins/vue-html2pdf', mode: 'client' }
+    { src: '@/plugins/vue-html2pdf', mode: 'client' },
+    // '~/plugins/leaflet.js'
   ],
 
   components: true,
@@ -126,9 +128,7 @@ export default {
     'nuxt-vue-multiselect',
     'cookie-universal-nuxt',
     '@nuxt/http',
-    // ['nuxt-vuex-localstorage', {
-    //   sessionStorage: ['sessionid']
-    // }]
+    'nuxt-leaflet',
   ],
 
   bootstrapVue: {

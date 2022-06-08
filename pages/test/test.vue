@@ -6,22 +6,32 @@
     <hr />
     <p>{{ ObjectCounter.length }}</p>
     <hr />
-    <GridMultiSelect
+    <!-- <GridMultiSelect
       v-model="selectedItems"
       :items="items"
       item-key="national_id"
       item-label=" last_name"
-    />
+    /> -->
     <hr />
+    <div id="map-wrap" style="height: 100vh">
+      <client-only>
+        <l-map :zoom="130" :center="[36.31095, 59.54853]">
+          <l-tile-layer
+            url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+          ></l-tile-layer>
+          <l-marker :lat-lng="[36.31095, 59.54853]"></l-marker>
+        </l-map>
+      </client-only>
+    </div>
   </div>
 </template>
 
 <script>
 import Vue2Filters from 'vue2-filters'
-import GridMultiSelect from 'vue-gridmultiselect'
+// import GridMultiSelect from 'vue-gridmultiselect'
 import 'vue-gridmultiselect/dist/vue-gridmultiselect.css'
 export default {
-  components: { GridMultiSelect },
+  // components: { GridMultiSelect },
   mixins: [Vue2Filters.mixin],
   // vuetify: new Vuetify(),
   layout: 'test',

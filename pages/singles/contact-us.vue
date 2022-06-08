@@ -16,7 +16,8 @@
                   <div class="row row-no-gutter">
                     <div class="col-md-12">
                       <address class="theme-contact-address">
-                        خراسان رضوی، مشهد، خیابان بزرگمهر، نبش بزرگمهر جنوبی 2، پلاک 1، شرکت خدمات مسافرتی پارت ونک
+                        خراسان رضوی، مشهد، خیابان بزرگمهر، نبش بزرگمهر جنوبی 2،
+                        پلاک 1، شرکت خدمات مسافرتی پارت ونک
                       </address>
                     </div>
                   </div>
@@ -73,17 +74,21 @@
                       placeholder="پیام"
                     ></textarea>
                   </div>
-                  <a class="btn btn-uc btn-primary btn-lg" href="#"
-                    >پیام خود را ارسال کنید</a
+                  <button class="btn btn-uc btn-primary btn-lg" href="#"
+                    >پیام خود را ارسال کنید</button
                   >
                 </div>
                 <div class="col-md-5">
-                  <div
-                    class="google-map theme-contact-map"
-                    data-lat="40.7483624"
-                    data-lng="-73.9900896"
-                    data-tab="false"
-                  ></div>
+                  <div class="google-map theme-contact-map">
+                    <client-only>
+                      <l-map :zoom="130" :center="[36.31095, 59.54853]">
+                        <l-tile-layer
+                          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+                        ></l-tile-layer>
+                        <l-marker :lat-lng="[36.31095, 59.54853]"></l-marker>
+                      </l-map>
+                    </client-only>
+                  </div>
                 </div>
               </div>
             </div>
@@ -98,5 +103,4 @@
 .area-bg {
   background-image: url('~/static/img/man-wearing-red-while-sitting-inside-concrete-bulding-7065_1500x800.jpg');
 }
-
 </style>
