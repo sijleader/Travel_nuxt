@@ -6,12 +6,7 @@
     <hr />
     <p>{{ ObjectCounter.length }}</p>
     <hr />
-    <!-- <GridMultiSelect
-      v-model="selectedItems"
-      :items="items"
-      item-key="national_id"
-      item-label=" last_name"
-    /> -->
+    
     <hr />
     <div id="map-wrap" style="height: 100vh">
       <client-only>
