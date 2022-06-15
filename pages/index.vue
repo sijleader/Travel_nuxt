@@ -49,21 +49,23 @@
                   role="tablist"
                   content-class="mt-3"
                   fill
-                  justified
+                  
                 >
                   <b-tab
                     class="tabbable tab-pane"
                     title="پروازها"
                     title-link-class="tab-pane"
                     active
-                    ><Flight
-                  /></b-tab>
+                  >
+                    <Flight />
+                  </b-tab>
                   <b-tab
                     class="tabbable tab-pane"
                     title-link-class="tab-pane"
                     title="هتل"
-                    ><Hotel
-                  /></b-tab>
+                  >
+                    <Hotel />
+                  </b-tab>
                 </b-tabs>
               </div> -->
             </div>

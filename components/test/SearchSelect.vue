@@ -9,7 +9,7 @@
             >
                 <i class="theme-search-area-section-icon lin lin-location-pin"></i>
                 <span v-if="value !== null" class="content">{{ value }}</span>
-                <span v-else class="content">مبدا</span>
+                <span v-else class="content">{{pplaceholder}}</span>
             </button>
             <div v-show="isOpen" ref="dropdown" class="search-select-dropdown">
                 <input
@@ -53,13 +53,13 @@ export default {
     components: {
         OnClickOutside,
     },
-    props: ['value', 'options', 'filterFunction'],
+    props: ['value', 'options', 'filterFunction','placeholder'],
     data() {
         return {
             isOpen: false,
             search: '',
             highlightedIndex: 0,
-            // placeholder:'مبدا'
+            pplaceholder:this.placeholder
         }
     },
     computed: {

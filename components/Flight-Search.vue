@@ -20,6 +20,7 @@
                     v-model="departure"
                     :options="cities"
                     :filter-function="applySearchFilter"
+                    placeholder="مبدا"
                   ></search-select>
                 </div>
               </div>
@@ -42,6 +43,7 @@
                     v-model="destination"
                     :options="cities"
                     :filter-function="applySearchFilter"
+                    placeholder="مقصد"
                   ></search-select>
                 </div>
               </div>
