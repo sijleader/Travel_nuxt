@@ -27,7 +27,7 @@
                 >
                   <li>
                     <nuxt-link data-bs-toggle="tab" to="#Flight"
-                      >پروازها</nuxt-link
+                      >پرواز داخلی</nuxt-link
                     >
                   </li>
                   <li>

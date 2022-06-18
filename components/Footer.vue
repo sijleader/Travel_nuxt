@@ -145,7 +145,7 @@
             >
               <div class="theme-footer-section-subscribe-bg footer-bg"></div>
               <div class="theme-footer-section-subscribe-content">
-                <h5 class="theme-footer-section-title">عضویت در خبرنامه</h5>
+                <h5 class="theme-footer-section-title">عضویت در خبرنامه پیامکی</h5>
                 <p class="text-muted">
                   با اشتراک در خبرنامه از جدیدترین اخبار و هتل ها باخبر شوید.
                 </p>
@@ -155,7 +155,7 @@
                       <input
                         class="form-control theme-footer-subscribe-form-control"
                         type="email"
-                        placeholder="ایمیل خود را وارد نمایید"
+                        placeholder="شماره همراه خود را وارد نمایید"
                       />
                     </div>
                     <div class="col-md-5 col-xs-4">

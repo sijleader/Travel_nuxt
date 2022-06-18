@@ -3,106 +3,50 @@
     <div class="theme-search-area-form">
       <div class="row" data-gutter="30">
         <div class="col-md-3-5">
-          <div
-            class="theme-search-area-section first theme-search-area-section-line"
-          >
+          <div class="theme-search-area-section first theme-search-area-section-line">
             <div class="theme-search-area-section-inner">
-              <i
-                class="theme-search-area-section-icon lin lin-location-pin"
-              ></i>
+              <i class="theme-search-area-section-icon lin lin-location-pin"></i>
               <!-- <input
                 class="theme-search-area-section-input typeahead"
                 type="text"
                 placeholder="موقعیت هتل"
                 data-provide="typeahead"
               /> -->
-              <search-select
-                v-model="city"
-                :options="cities"
-                :filter-function="applySearchFilter"
-                placeholder="موقعیت هتل"
-              ></search-select>
+              <search-select v-model="city" :options="cities" :filter-function="applySearchFilter"
+                placeholder="موقعیت هتل"></search-select>
             </div>
           </div>
         </div>
         <div class="col-md-7">
           <div class="row" data-gutter="30">
             <div class="col-md-6">
-              <div
-                class="theme-search-area-section theme-search-area-section-line"
-              >
+              <div class="theme-search-area-section theme-search-area-section-line">
                 <div class="theme-search-area-section-inner">
-                  <i
-                    class="theme-search-area-section-icon lin lin-calendar"
-                  ></i>
-                  <input
-                    class="theme-search-area-section-input datePickerStart _mob-h check-in-desktop"
-                    value=""
-                    type="text"
-                    placeholder="تاریخ ورود"
-                  />
-                  <date-picker
-                    v-model="check_in"
-                    simple
-                    :min="new Date()"
-                    format="YYYY-MM-DD"
-                    display-format="jYYYY-jMM-jDD"
-                    custom-input=".check-in-desktop"
-                  />
-                  <input
-                    class="theme-search-area-section-input _desk-h mobile-picker check-in-mobile"
-                    placeholder="تاریخ ورود"
-                    type="text"
-                  />
-                  <date-picker
-                    v-model="check_in"
-                    simple
-                    :min="new Date()"
-                    format="YYYY-MM-DD"
-                    display-format="jYYYY-jMM-jDD"
-                    custom-input=".check-in-mobile"
-                  />
+                  <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                  <input class="theme-search-area-section-input datePickerStart _mob-h check-in-desktop" value=""
+                    type="text" placeholder="تاریخ ورود" />
+                  <date-picker v-model="check_in" simple :min="new Date()" format="YYYY-MM-DD"
+                    display-format="jYYYY-jMM-jDD" custom-input=".check-in-desktop" />
+                  <input class="theme-search-area-section-input _desk-h mobile-picker check-in-mobile"
+                    placeholder="تاریخ ورود" type="text" />
+                  <date-picker v-model="check_in" simple :min="new Date()" format="YYYY-MM-DD"
+                    display-format="jYYYY-jMM-jDD" custom-input=".check-in-mobile" />
                 </div>
               </div>
             </div>
             <div class="col-md-6">
-              <div
-                class="theme-search-area-section theme-search-area-section-line"
-              >
+              <div class="theme-search-area-section theme-search-area-section-line">
                 <div class="theme-search-area-section-inner">
-                  <i
-                    class="theme-search-area-section-icon lin lin-calendar"
-                  ></i>
-                  <input
-                    class="theme-search-area-section-input datePickerEnd _mob-h check-out-desktop"
-                    value=""
-                    type="text"
-                    placeholder="تاریخ خروج"
-                  />
-                  <date-picker
-                    v-model="check_out"
-                    simple
-                    :disabled="!check_in"
-                    :min="check_in"
-                    format="YYYY-MM-DD"
-                    display-format="jYYYY-jMM-jDD"
-                    custom-input=".check-out-desktop"
-                  />
-                  <input
-                    class="theme-search-area-section-input _desk-h mobile-picker check-out-mobile"
-                    placeholder="تاریخ خروج"
-                    type="text"
-                  />
+                  <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                  <input class="theme-search-area-section-input datePickerEnd _mob-h check-out-desktop" value=""
+                    type="text" placeholder="تاریخ خروج" />
+                  <date-picker v-model="check_out" simple :disabled="!check_in" :min="check_in" format="YYYY-MM-DD"
+                    display-format="jYYYY-jMM-jDD" custom-input=".check-out-desktop" />
+                  <input class="theme-search-area-section-input _desk-h mobile-picker check-out-mobile"
+                    placeholder="تاریخ خروج" type="text" />
 
-                  <date-picker
-                    v-model="check_out"
-                    simple
-                    :disabled="!check_in"
-                    :min="check_in"
-                    format="YYYY-MM-DD"
-                    display-format="jYYYY-jMM-jDD"
-                    custom-input=".check-out-mobile"
-                  />
+                  <date-picker v-model="check_out" simple :disabled="!check_in" :min="check_in" format="YYYY-MM-DD"
+                    display-format="jYYYY-jMM-jDD" custom-input=".check-out-mobile" />
                 </div>
               </div>
             </div>
@@ -233,11 +177,12 @@
           </div>
         </div> -->
         <div class="col-md-1-5">
-          <button
-            class="theme-search-area-submit _mt-0 _fs-xl theme-search-area-submit-curved theme-search-area-submit-primary theme-search-area-submit-glow"
-          >
-            ←
-          </button>
+          <nuxt-link to="/hotel">
+            <button
+              class="theme-search-area-submit _mt-0 _fs-xl theme-search-area-submit-curved theme-search-area-submit-primary theme-search-area-submit-glow">
+              ←
+            </button>
+          </nuxt-link>
         </div>
       </div>
     </div>
