@@ -104,14 +104,14 @@
 
           <div class="col-md-4">
             <div class="theme-footer-section theme-footer- google-map">
-              <client-only>
+              <!-- <client-only>
                 <l-map :zoom="130" :center="[36.31095, 59.54853]">
                   <l-tile-layer
                     url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
                   ></l-tile-layer>
                   <l-marker :lat-lng="[36.31095, 59.54853]"></l-marker>
                 </l-map>
-              </client-only>
+              </client-only> -->
             </div>
           </div>
         </div>

@@ -76,16 +76,15 @@ export default {
     { src: '~/plugins/jquery.js', ssr: false },
     '~/plugins/vue2-filters',
     { src: '~/plugins/datePicker', ssr: false },
-    {
-      src: '~/plugins/modal.js',
-      mode: 'client',
-    },
     // {
     //   src: '~/plugins/multiselect.js',
     //   mode: 'client',
     // },
     '~/plugins/v-select.js',
     { src: '@/plugins/vue-html2pdf', mode: 'client' },
+    '~/plugins/vuePhoneNumberInput.js',
+    { src: "~/plugins/vue-js-modal", mode: "client" }
+    // '~/plugins/maz-ui.js'
     // '~/plugins/leaflet.js'
   ],
 
@@ -211,6 +210,14 @@ export default {
   build: {
     babel: {
       compact: true,
+      plugins: [
+        [
+          'component', {
+            libraryName: 'maz-ui',
+            styleLibraryName: 'css'
+          }
+        ]
+      ]
      },
      extend (config) {
       config.module.rules.push({

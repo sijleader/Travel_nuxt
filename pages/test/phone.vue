@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <section class="w-full flex justify-center items-center my-10">
     <form class="">
       <div class="form-group">
@@ -14,7 +14,6 @@
                class="h-10 rounded-lg outline-none p-2" 
                placeholder=" Enter Phone Number"     
           />
-           <!--          Add Svg Icon-->
           <svg
 
             xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +30,6 @@
             />
           </svg>
 
-          <!--          Remove Svg Icon-->
           <svg
             v-show="phoneNumbers.length > 1"
             xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +49,7 @@
       </div>
     </form>
   </section>
-</template>
+</template> 
 
 <script>
 export default {
@@ -68,6 +66,76 @@ export default {
     removeField(index, fieldType) {
       fieldType.splice(index, 1);
     },
+  },
+}
+</script> -->
+<template>
+  <div dir="ltr">
+    <!-- <MazPhoneNumberInput v-model="phoneNumber" @update="results = $event" /> -->
+    <!-- <VuePhoneNumberInput v-model="phoneNumber" /> -->
+    <!-- <h1>vue-tel-input</h1>
+      <div style="width: 500px; margin: 20px auto">
+        <vue-tel-input
+          v-model="vueTel.phone"
+          v-bind="vueTel.props"
+        ></vue-tel-input>
+      </div> -->
+
+    <button @click="$modal.show('my-modal')">Show modal</button>
+
+    <modal name="my-modal">
+      <div>
+        <div style="width: 500px; margin: 20px auto">
+          <vue-phone-number-input
+            v-model="phoneNumber"
+            default-country-code="IR"
+            required
+            show-code-on-list
+            no-country-selector
+            :only-countries="['IR']"
+            size="lg"
+            :translations="translations"
+            @update="results = $event"
+          ></vue-phone-number-input>
+          <p>v-model value: {{ phoneNumber }}</p>
+          <div>update value: {{ results }}</div>
+        </div>
+
+        <button @click="$modal.hide('my-modal')">Close it</button>
+      </div>
+    </modal>
+  </div>
+</template>
+
+<script>
+// import Vue from 'vue';
+// import VuePhoneNumberInput from 'vue-phone-number-input';
+// import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+
+// Vue.component('vue-phone-number-input', VuePhoneNumberInput);
+// import Vue from 'vue'
+// import VueTelInput from 'vue-tel-input'
+// import VuePhoneNumberInput from 'vue-phone-number-input'
+// import 'vue-phone-number-input/dist/vue-phone-number-input.css'
+
+// Vue.use(VueTelInput)
+// Vue.component('vue-phone-number-input', VuePhoneNumberInput)
+
+// Vue.config.productionTip = false
+
+export default {
+  layout: 'test',
+
+  data() {
+    return {
+      phoneNumber: null,
+      results: null,
+      translations: {
+        phoneNumber: '09123456789',
+        phoneNumberLabel: 'لطفا شماره همراه خود را وارد نمایید',
+        example: '',
+      },
+    }
   },
 }
 </script>
