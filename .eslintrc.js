@@ -14,6 +14,8 @@ module.exports = {
   rules: {
     'vue/multi-word-component-names': 'off',
     'vue/no-multiple-template-root': 'off',
+    // 'vue/no-unused-vars': 'off',
+    'vue/no-unused-components':'off',
     "object-shorthand": 0,
     "object-literal-shorthand": 0,
     "property-no-vendor-prefix": 0,

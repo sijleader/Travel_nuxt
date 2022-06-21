@@ -115,7 +115,7 @@
                     v-model="end"
                     simple
                     :disabled="!start"
-                    :min="start"
+                    :min="tommorow"
                     format="YYYY-MM-DD"
                     display-format="jYYYY-jMM-jDD"
                     custom-input=".return-input-desktop"
@@ -130,7 +130,7 @@
                     v-model="end"
                     simple
                     :disabled="!start"
-                    :min="start"
+                    :min="tommorow"
                     format="YYYY-MM-DD"
                     display-format="jYYYY-jMM-jDD"
                     custom-input=".return-input-mobile"
@@ -298,6 +298,12 @@ export default {
   computed: {
     totalPassengers() {
       return this.adult + this.child + this.infant
+    },
+    tommorow() {
+      const today = new Date()
+      const tomorrow = new Date()
+      tomorrow.setDate(today.getDate() + 1)
+      return tomorrow
     },
   },
   methods: {

@@ -13,8 +13,8 @@
         <div class="container">
           <div class="row _pv-100">
             <div class="col-md-10 col-md-offset-1">
-              <DesktopSearch/>
-              <MobileSearch/>
+              <DesktopSearch />
+              <MobileSearch />
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
     >
       <div class="container">
         <div class="row row-col-static" id="sticky-parent" data-bs-gutter="20">
-          <DesktopFilters/>
+          <DesktopFilters />
           <div class="col-md-6-5">
             <div class="theme-search-results-sort _mob-h _b-n clearfix">
               <h5 class="theme-search-results-sort-title">مرتب سازی:</h5>
@@ -81,6 +81,7 @@
                 </ul>
               </div>
             </div>
+
             <div class="theme-search-results-sort-select _desk-h">
               <select>
                 <option>قیمت</option>
@@ -93,6 +94,10 @@
                 <option>بهترین معاملات</option>
               </select>
             </div>
+            <div class="theme-search-results-mobile-filters" id="mobileFilters">
+              <MobileFilters />
+            </div>
+
             <div class="theme-search-results">
               <div class="_mob-h">
                 <div
@@ -2285,11 +2290,7 @@
                               </div>
                             </div>
                           </div>
-                          <div
-                            class="tab-pane"
-                            role="tabpanel"
-                            id="tab-item-2"
-                          >
+                          <div class="tab-pane" role="tabpanel" id="tab-item-2">
                             <div class="row" data-bs-gutter="20">
                               <div class="col-md-9">
                                 <div
@@ -2376,11 +2377,7 @@
                               </div>
                             </div>
                           </div>
-                          <div
-                            class="tab-pane"
-                            role="tabpanel"
-                            id="tab-item-3"
-                          >
+                          <div class="tab-pane" role="tabpanel" id="tab-item-3">
                             <div class="theme-reviews">
                               <div class="theme-reviews-list">
                                 <article class="theme-reviews-item">
@@ -2623,11 +2620,7 @@
                               </div>
                             </div>
                           </div>
-                          <div
-                            class="tab-pane"
-                            role="tabpanel"
-                            id="tab-item-4"
-                          >
+                          <div class="tab-pane" role="tabpanel" id="tab-item-4">
                             <div class="row" data-bs-gutter="10">
                               <div class="col-md-3">
                                 <div
@@ -2958,7 +2951,6 @@
                   </div>
                 </div> -->
               </div>
-              <MobileFilters/>
             </div>
           </div>
           <div class="col-md-2-5">
@@ -2996,13 +2988,13 @@ import MobileFilters from '../../components/Hotel/Mobile-Filters.vue'
 import MobileSearch from '../../components/Hotel/Mobile-Search.vue'
 import DesktopSearch from '../../components/Hotel/Desktop-Search.vue'
 import DesktopFilters from '../../components/Hotel/Desktop-Filters.vue'
-export default{
-  layout:'default',
-  components:{
+export default {
+  layout: 'default',
+  components: {
     MobileFilters,
     MobileSearch,
     DesktopSearch,
-    DesktopFilters
-}
+    DesktopFilters,
+  },
 }
 </script>

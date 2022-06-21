@@ -30,66 +30,70 @@
             </div>
 
             <div class="modal-body" dir="ltr">
-            <div class="row">
-              <div class="col s12 center-align">
-                <h1>
-                  <i class="medium material-icons">verified_user</i> ورود یا ثبت‌نام
-                </h1>
-                <h3>
-                  <i class="medium material-icons">verified_user</i>
-                   برای ادامه شماره موبایل خود را وارد کنید.
-                </h3>
+              <div class="row">
+                <div class="col s12 center-align">
+                  <h1>
+                    <i class="medium material-icons">verified_user</i> ورود یا
+                    ثبت‌نام
+                  </h1>
+                  <h3>
+                    <i class="medium material-icons">verified_user</i>
+                    برای ادامه شماره موبایل خود را وارد کنید.
+                  </h3>
+                </div>
               </div>
-              
-            </div>
-            <div class="row" v-if="request.token === ''">
-              <form v-on:submit.prevent class="col s12">
-                <div class="row center-align">
-                  <div class="input-field col s12">
-                    <i class="material-icons prefix">phone</i>
-                    <input type="text" id="phoneNumber" v-model="phoneNumber" />
-                    <label for="phoneNumber"> Phone Number</label>
-                  </div>
+              <div class="row" v-if="request.token === ''">
+                <form v-on:submit.prevent class="col s12">
                   <div class="row center-align">
-                    <button
-                      v-on:click.stop.prevent="sendVerificationCode"
-                      type="submit"
-                      class="waves-effect waves-light btn"
-                    >
-                      <i class="material-icons left">account_box</i>Send me a
-                      verifiation code
-                    </button>
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">phone</i>
+                      <input
+                        type="text"
+                        id="phoneNumber"
+                        v-model="phoneNumber"
+                      />
+                      <label for="phoneNumber"> Phone Number</label>
+                    </div>
+                    <div class="row center-align">
+                      <button
+                        v-on:click.stop.prevent="sendVerificationCode"
+                        type="submit"
+                        class="waves-effect waves-light btn"
+                      >
+                        <i class="material-icons left">account_box</i>Send me a
+                        verifiation code
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </form>
-            </div>
-            <div class="row" v-else>
-              <form v-on:submit.prevent class="col s12">
-                <div class="row center-align">
-                  <div class="input-field col s12">
-                    <i class="material-icons prefix">sms</i>
-                    <input
-                      type="text"
-                      id="verificationPin"
-                      v-model="request.verificationPin"
-                    />
-                    <label for="verificationPin">
-                      Enter the pin you were sent</label
-                    >
-                  </div>
+                </form>
+              </div>
+              <div class="row" v-else>
+                <form v-on:submit.prevent class="col s12">
                   <div class="row center-align">
-                    <button
-                      v-on:click.stop.prevent="verifyPin"
-                      type="submit"
-                      class="waves-effect waves-light btn"
-                    >
-                      <i class="material-icons left">account_box</i>Verify me
-                    </button>
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">sms</i>
+                      <input
+                        type="text"
+                        id="verificationPin"
+                        v-model="request.verificationPin"
+                      />
+                      <label for="verificationPin">
+                        Enter the pin you were sent</label
+                      >
+                    </div>
+                    <div class="row center-align">
+                      <button
+                        v-on:click.stop.prevent="verifyPin"
+                        type="submit"
+                        class="waves-effect waves-light btn"
+                      >
+                        <i class="material-icons left">account_box</i>Verify me
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
-          </div>
 
             <div class="modal-footer">
               <button
@@ -100,12 +104,16 @@
                 Close
               </button>
             </div>
-            
           </div>
         </div>
       </div>
+      <hr />
+      <div>
+        <b-button @click="modalShow = !modalShow">Open Modal</b-button>
+
+        <b-modal v-model="modalShow" class="container">Hello From Modal!</b-modal>
+      </div>
     </div>
-    <hr />
   </div>
 </template>
 <script>
@@ -118,29 +126,27 @@ import Vue from 'vue'
 import 'vue-js-modal/dist/styles.css'
 Vue.component('vue-phone-number-input', VuePhoneNumberInput)
 export default {
-  layout:'test',
+  layout: 'test',
   head: {
     meta: [
-      { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
     ],
     script: [
       {
-        src:
-          'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js',
-        body: true
-      }
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js',
+        body: true,
+      },
     ],
     link: [
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
+        href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
       },
       {
         rel: 'stylesheet',
-        href:
-          'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css'
-      }
-    ]
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css',
+      },
+    ],
   },
   data() {
     return {
@@ -149,9 +155,18 @@ export default {
         token: '',
         verificationPin: '',
       },
+      modalShow: false,
     }
   },
   methods: {
+    startTransitionModal() {
+      this.$refs.backdrop.classList.toggle('d-block')
+      this.$refs.modal.classList.toggle('d-block')
+    },
+    endTransitionModal() {
+      this.$refs.backdrop.classList.toggle('show')
+      this.$refs.modal.classList.toggle('show')
+    },
     // displayMessage: function (type, message) {
     //   if (type === 'error') {
     //     M.toast({
