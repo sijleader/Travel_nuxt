@@ -125,10 +125,11 @@ export default {
   },
 
   proxy: {
-    '/AirLowFareSearch': 'https://apidemo.partocrs.com/Rest/Air',
+    // '/AirLowFareSearch': 'https://apidemo.partocrs.com/Rest/Air',
     '/login':'http://127.0.0.1:8000/rest/passenger',
     '/login/verify':'http://127.0.0.1:8000/rest/passenger',
-    '/search':'http://127.0.0.1:8000/rest/flights'
+    '/citieslist':'http://127.0.0.1:8000/rest/flights',
+    '/search':'http://127.0.0.1:8000/rest/flights',
   },
   auth: {
     strategies: {

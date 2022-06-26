@@ -67,9 +67,6 @@ export default {
             return this.filterFunction(this.search, this.options)
         },
     },
-    // beforeDestroy() {
-    //   this.popper.remove()
-    // },
     methods: {
         open() {
             if (this.isOpen) {
