@@ -8,7 +8,11 @@
     <hr />
     
     <hr />
-    <div id="map-wrap" style="height: 100vh">
+     <!-- <div>
+    <p>window width: {{ $windowWidth }}</p>
+    <p>window height: {{ $windowHeight }}</p>
+  </div> -->
+    <!-- <div id="map-wrap" style="height: 100vh">
       <client-only>
         <l-map :zoom="130" :center="[36.31095, 59.54853]">
           <l-tile-layer
@@ -17,7 +21,7 @@
           <l-marker :lat-lng="[36.31095, 59.54853]"></l-marker>
         </l-map>
       </client-only>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -25,11 +29,21 @@
 import Vue2Filters from 'vue2-filters'
 // import GridMultiSelect from 'vue-gridmultiselect'
 import 'vue-gridmultiselect/dist/vue-gridmultiselect.css'
+// import { vueWindowSizeMixin } from 'vue-window-size/option-api'
+// import { useWindowSize } from 'vue-window-size';
+
 export default {
   // components: { GridMultiSelect },
   mixins: [Vue2Filters.mixin],
   // vuetify: new Vuetify(),
   layout: 'test',
+  // setup() {
+  //   const { width, height } = useWindowSize();
+  //   return {
+  //     windowWidth: width,
+  //     windowHeight: height,
+  //   };
+  // },
   data() {
     return {
       users: [

@@ -10,12 +10,6 @@
                 class="theme-search-area-section first theme-search-area-section-line"
               >
                 <div class="theme-search-area-section-inner">
-                  <!-- <input
-                    class="theme-search-area-section-input typeahead"
-                    type="text"
-                    placeholder="مبدا"
-                    data-provide="typeahead"
-                  /> -->
                   <search-select
                     v-model="departure"
                     :options="cities"
@@ -33,12 +27,6 @@
                   <i
                     class="theme-search-area-section-icon lin lin-location-pin"
                   ></i>
-                  <!-- <input
-                    class="theme-search-area-section-input typeahead"
-                    type="text"
-                    placeholder="مقصد"
-                    data-provide="typeahead"
-                  /> -->
                   <search-select
                     v-model="destination"
                     :options="cities"
@@ -237,8 +225,15 @@
         <!-- submit button -->
         <div class="col-md-1">
           <nuxt-link to="/flights">
+            <!-- <button
+              class="theme-search-area-submit _mt-0 _fs-xl theme-search-area-submit-curved theme-search-area-submit-primary theme-search-area-submit-glow"
+            >
+              ←
+            </button> -->
             <button
               class="theme-search-area-submit _mt-0 _fs-xl theme-search-area-submit-curved theme-search-area-submit-primary theme-search-area-submit-glow"
+              @click.prevent="onsubmit"
+              type="submit"
             >
               ←
             </button>
@@ -256,13 +251,16 @@
         و برگشت
       </div>
     </div>
+    <div dir="ltr">
+      {{ result }}
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import SearchSelect from '~/components/test/SearchSelect.vue'
-// import Popper from 'popper.js'
-// import OnClickOutside from '~/components/test/OnClickOutside.vue'
+
 export default {
   components: {
     SearchSelect,
@@ -278,21 +276,11 @@ export default {
       child: 0,
       infant: 0,
       selected: 'one-way',
-      user: '',
       departure: null,
       destination: null,
       search: '',
-      cities: [
-        '1LT Lakes, Dale',
-        '1LT Ball, Michael',
-        'CW3 Latane, Paul',
-        'SFC Busby, Ryan',
-        'SSG Salinas, Ricky',
-        'SSG Hochheimer, Steven',
-        'SSG Fossett, Matt',
-        'SSG Sabatini, Jesse',
-        'SSG jackson, Jeremy',
-      ],
+      cities: ['MHD', 'THR', 'BIJ', 'SHR'],
+      result: null,
     }
   },
   computed: {
@@ -345,6 +333,33 @@ export default {
       return sols.filter((city) =>
         city.toLowerCase().includes(search.toLowerCase())
       )
+    },
+    onsubmit() {
+      // const token = process.env.AUTH_TOKEN
+      const token =
+        'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2UyNzdhYTBmMDE4N2Y2M2U3MTExYzIxNTcwODUwNWQ1NGViN2M1NTIyMWVhOTBiYWVjNjg1NDE2YjMwNjBmMjQzODdhNzdjMTE0MTEzNWEiLCJpYXQiOjE2NTUyOTE1MjAuNjgxMDQzLCJuYmYiOjE2NTUyOTE1MjAuNjgxMDQ2LCJleHAiOjE2ODY4Mjc1MjAuNTUzNDE3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kpXB2kb9huAbclEktVHpooynVfQ-FzERbFHbTv-UvlzJIDNAsl8JC7myE8ozU-wwvuphx6TqLB_e0X0DoJVB22Z6pjx-VRHt1rzhhR4WO9eI1_Q1UU7LnerOY6viUgxgkgxrpitRRIWz7KwyZW_v-yHiK0oZ3p_rUitd4ABDVw5zv2ryvoT7NJ3HQjQkiTCHE3jehu0qkCQtVGbM-6Z9-7XrFcL_5pK818Iu53YxJZZuV6DYt2Dm_e2qk7SX0Y31YrlysVSVJZW4awEIokYcjOe_oeD1LGFIB-qTnTivSQar-BPUmouUXOYCyMXINrYtQBlRhyT9I9kmLNNOegFi88EwYVGbJ38uj9SKZ3C9Fr0o-fyQm69WEoOQ0qrKDxXgnbxZxPDAbmctCWysWouZVhMBxFUHsKbT-5oY88TOVdEDBkpp_3JFsDmmA8zpotvLQZw765anyEP_1ZDzh6xm8evq9fXNT4IoRAnwYqPuaWxyWoEuAiN2r5ld4m_7fGJzjG99IafvUD1Do9vuP_mkArrW0OTDeN5YZaGESlrheyuIgFPX2usnvaPcnoXJumdQyEcZxSQ57icCB7FKp4Nh0QQcw2tKUSHJ4F_xydoaD4ptzkNf6UAjeFlQ4tQ4B79ommzK0VLAC9mmilcBFocqhh7QPJgJAswErS8bLR0DzrI'
+      axios({
+        method: 'post',
+        url: '/search',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: {
+          AdultCount: this.adult,
+          ChildCount: this.child,
+          InfantCount: this.infant,
+          OriginLocationCode: this.departure,
+          DestinationLocationCode: this.destination,
+          DepartureDateTime: this.start,
+        },
+      })
+        .then(response => {
+          this.result = response.data
+          console.log('response', response)
+        })
+        .catch(error => {
+          console.log('error', error)
+        })
     },
   },
 }

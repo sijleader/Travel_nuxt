@@ -1,16 +1,8 @@
-/* eslint-disable nuxt/no-cjs-in-config */
-// eslint-disable-next-line nuxt/no-cjs-in-config
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack')
-// import { LoaderOptionsPlugin } from 'webpack';
-// import 'vue-nav-tabs/themes/vue-tabs.css'
-// import {VueTabs, VTab} from 'vue-nav-tabs'
+
 export default {
-  // server: {
-  //   host: '192.168.1.150'
-  // },
+
   target: 'static',
-  // ssr:false,
 
   head: {
     title: 'client',
@@ -21,36 +13,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
-      // { rel: 'icon', type: 'image/png', href: '/favicon-partvanak.png' },
       { rel: 'icon', type: 'image/x-icon', href: '/fav48.ico' }
-      // {
-      //   rel: 'stylesheet',
-      //   href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700',
-      // },
-      // {
-      //   rel: 'stylesheet',
-      //   href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,700',
-      // },
-      // {
-      //   rel: 'stylesheet',
-      //   href: '~/assets/css/font-awesome.css',
-      // },
-      // {
-      //   rel: 'stylesheet',
-      //   href: '~/assets/css/lineicons.css',
-      // },
-      // {
-      //   rel: 'stylesheet',
-      //   href: '~/assets/css/weather-icons.css',
-      // },
-      // {
-      //   rel: 'stylesheet',
-      //   href: '~/assets/css/bootstrap.css',
-      // },
-      // {
-      //   rel: 'stylesheet',
-      //   href: '~/assets/css/styles.css',
-      // },
     ],
     script: [
       {
@@ -68,24 +31,18 @@ export default {
     '@/assets/css/weather-icons.css',
     '@/assets/css/bootstrap.css',
     '@/assets/css/styles.css',
-    // '@/assets/css/app.css',
   ],
 
   plugins: [
     '~/plugins/bootstrap.js',
-    { src: '~/plugins/jquery.js', ssr: false },
     '~/plugins/vue2-filters',
-    { src: '~/plugins/datePicker', ssr: false },
-    // {
-    //   src: '~/plugins/multiselect.js',
-    //   mode: 'client',
-    // },
     '~/plugins/v-select.js',
-    { src: '@/plugins/vue-html2pdf', mode: 'client' },
+    '~/plugins/vue-composition.js',
     '~/plugins/vuePhoneNumberInput.js',
-    { src: "~/plugins/vue-js-modal", mode: "client" }
-    // '~/plugins/maz-ui.js'
-    // '~/plugins/leaflet.js'
+    { src: "~/plugins/vue-js-modal", mode: "client" },
+    { src: '~/plugins/jquery.js', ssr: false },
+    { src: '~/plugins/vue-html2pdf', mode: 'client' },
+    { src: '~/plugins/datePicker', ssr: false },
   ],
 
   components: true,
@@ -116,7 +73,6 @@ export default {
       },
     ],
   },
-  // mode: 'production',
 
   modules: [
     '@nuxtjs/axios',
@@ -143,7 +99,6 @@ export default {
       'BModal',
       'BIcon',
       'BIconCalendar',
-      // 'NavbarPlugin',
       'VBTogglePlugin',
       'BVModalPlugin',
     ],
@@ -152,36 +107,28 @@ export default {
       'VBPopover',
       'VBTooltip',
       'VBScrollspy',
-      // 'NavbarPlugin',
     ],
     componentPlugins: ['IconsPlugin'],
     icons: true,
   },
 
   recaptcha: {
-    hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
-    // language: String,   // Recaptcha language (v2)
-    siteKey: '6Ld5gOAeAAAAANskjaZcwMPX-GuTw_-kWx8ZgGVp', // Site key for requests
-    version: 3, // Version
-    size: 'compact', // Size: 'compact', 'normal', 'invisible' (v2)
+    hideBadge: false,
+    siteKey: '6Ld5gOAeAAAAANskjaZcwMPX-GuTw_-kWx8ZgGVp',
+    version: 3,
+    size: 'compact',
   },
 
-  // publicRuntimeConfig: {
-  //     recaptcha: {
-  //       /* reCAPTCHA options */
-  //       siteKey: process.env.RECAPTCHA_SITE_KEY // for example
-  //     }
-  //   },
-
   axios: {
-    // baseURL: 'http://127.0.0.1:3333/api',
-    // baseURL: 'https://apidemo.partocrs.com/Rest/Air',
     proxy: true,
     N8N_USE_DEPRECATED_REQUEST_LIB: true,
   },
 
   proxy: {
     '/AirLowFareSearch': 'https://apidemo.partocrs.com/Rest/Air',
+    '/login':'http://127.0.0.1:8000/rest/passenger',
+    '/login/verify':'http://127.0.0.1:8000/rest/passenger',
+    '/search':'http://127.0.0.1:8000/rest/flights'
   },
   auth: {
     strategies: {
@@ -226,12 +173,5 @@ export default {
         type: "javascript/auto"
       })
     }
-    // plugins: [
-    //   new webpack.ProvidePlugin({
-    //     $: 'jquery',
-    //     jQuery: 'jquery',
-    //     'window.jQuery': 'jquery',
-    //   }),
-    // ],
   },
 }
