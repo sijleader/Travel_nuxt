@@ -1,14 +1,6 @@
 <template>
-  <div>
-    <!-- <button
-      class="theme-search-area-inline-link magnific-inline"
-      data-bs-toggle="modal"
-      data-bs-target="#SearchModal"
-    >
-      <i class="fa fa-pencil"></i>ویرایش کنید
-    </button> -->
-
-    <div id="searchEditModal" class="modal-dialog">
+  <div class="theme-search-area-inline _desk-h theme-search-area-inline-white">
+    <div class="modal-dialog">
       <div class="magnific-popup modal-content">
         <div class="theme-search-area-header">
           <h4 class="theme-search-area-title theme-search-area-title-sm">
@@ -71,7 +63,7 @@
                 </div>
               </div>
             </div>
-          <!-- </div>
+            <!-- </div>
           <div class="row" data-gutter="10"> -->
             <div class="col-xs-6">
               <div
@@ -99,7 +91,10 @@
                 </div>
               </div>
             </div>
-            <div class="" :class="[selected == 'two-way' ? 'col-xs-6' : 'hidden']">
+            <div
+              class=""
+              :class="[selected == 'two-way' ? 'col-xs-6' : 'hidden']"
+            >
               <div
                 class="theme-search-area-section theme-search-area-section-curved"
               >
@@ -128,7 +123,10 @@
                 </div>
               </div>
             </div>
-            <div class="" :class="[selected == 'two-way' ? 'col-xs-12' : 'col-xs-6']">
+            <div
+              class=""
+              :class="[selected == 'two-way' ? 'col-xs-12' : 'col-xs-6']"
+            >
               <div
                 class="theme-search-area-section theme-search-area-section-curved quantity-selector"
               >

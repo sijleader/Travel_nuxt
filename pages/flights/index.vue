@@ -1,9 +1,9 @@
 <template>
   <div>
+    <!-- <Loading v-if="isLoading"></Loading> -->
     <div class="theme-hero-area">
       <div class="theme-hero-area-bg-wrap">
-        <div id="hero-banner" class="theme-hero-area-bg banner-bg"></div>
-        <!-- <img id="hero-banner" class="theme-hero-area-bg banner-bg" src="~/static/img/architecture-bridge-buildings-calm-waters-427679_1500x800.jpg"> -->
+        <div class="theme-hero-area-bg banner"></div>
         <div class="theme-hero-area-mask theme-hero-area-mask-strong"></div>
         <div
           class="blur-area"
@@ -17,23 +17,7 @@
           <div class="row _pb-50 _pt-100 _pv-mob-50">
             <div class="col-md-10 col-md-offset-1">
               <SeachDesktop />
-              <div
-                class="theme-search-area-inline _desk-h theme-search-area-inline-white"
-              >
-                <!-- <h4 class="theme-search-area-inline-title">پروازهای لودون</h4>
-                <p class="theme-search-area-inline-details">
-                  27 تیر ← 2 مهر، 1 مسافر
-                </p> -->
-                <!-- <b-button
-                  class="theme-search-area-inline-link magnific-inline"
-                  data-bs-toggle="modal"
-                  data-bs-target="#searchEditModal"
-                >
-                  <i class="fa fa-pencil"></i>ویرایش کنید
-                </b-button> -->
-                
-                <SearchMobile />
-              </div>
+              <SearchMobile />
             </div>
           </div>
         </div>
@@ -56,7 +40,7 @@
                 <p class="theme-ad-sign">تبلیغات</p>
                 <img
                   class="theme-ad-img"
-                  src="~/static/img/side_banners/flight/2.jpg"
+                  src="/img/side_banners/flight/2.jpg"
                   alt="تصویر متن جایگزین"
                   title="عنوان تصویر"
                 />
@@ -64,89 +48,54 @@
             </div>
           </div>
           <div class="col-md-7">
-            <div class="theme-search-results-sort _b-n _mob-h clearfix">
+            <div class="theme-search-results-sort _mob-h clearfix">
               <h5 class="theme-search-results-sort-title">مرتب سازی:</h5>
               <ul class="theme-search-results-sort-list">
-                <li>
+                <li class="justify-content-center flex-fill">
                   <a href="#"
                     >قیمت
                     <span>زیاد ← کم</span>
                   </a>
                 </li>
-                <li>
+                <li class="justify-content-center flex-fill">
                   <a href="#"
                     >قیمت
                     <span>کم ← زیاد</span>
                   </a>
                 </li>
-                <!-- <li class="active">
+                <li class="justify-content-center flex-fill">
                   <a href="#"
-                    >مدت زمان
-                    <span>طولانی ← کوتاه</span>
-                  </a>
-                </li> -->
-                <li>
-                  <a href="#"
-                    >توصیه
-                    <span>شده زیاد ← کم</span>
+                    >ساعت حرکت
+                    <span>زودترین ← دیرترین</span>
                   </a>
                 </li>
-                <li>
+                <li class="justify-content-center flex-fill">
                   <a href="#"
-                    >نام شرکت هواپیمایی
-                    <span>A ← Z</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#"
-                    >مدت زمان
-                    <span>طولانی ← کوتاه</span>
+                    >ساعت حرکت
+                    <span>دیرترین ← زودترین</span>
                   </a>
                 </li>
               </ul>
-              <!-- <div class="dropdown theme-search-results-sort-alt">
-                <a
-                  id="dropdownMenu"
-                  data-bs-toggle="dropdown"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  href="#"
-                  >بیشتر
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                  <li>
-                    <a href="#">برخاستن</a>
-                  </li>
-                  <li>
-                    <a href="#">فرود خروج</a>
-                  </li>
-                  <li>
-                    <a href="#">پرواز برگشت</a>
-                  </li>
-                  <li>
-                    <a href="#">فرود برگشت</a>
-                  </li>
-                </ul>
-              </div> -->
             </div>
-            <div class="theme-search-results-sort-select _desk-h">
+            <div class="theme-search-results-sort-select _desk-h clearfix">
               <select>
-                <option>قیمت</option>
-                <option>مدت زمان</option>
-                <option>توصیه شده</option>
-                <option>نام شرکت هواپیمایی</option>
-                <option>برخاستن</option>
-                <option>فرود خروج</option>
-                <option>پرواز برگشت</option>
-                <option>فرود برگشت</option>
+                <option>قیمت: زیاد ← کم</option>
+                <option>قیمت: کم ← زیاد</option>
+                <option>ساعت حرکت: زودترین ← دیرترین</option>
+                <option>ساعت حرکت: دیرترین ← زودترین</option>
               </select>
             </div>
             <FilterMobile />
-            <div class="theme-search-results">
-              <Ticket />
+            <div v-for="(ticket,i) in results" :key="i" class="theme-search-results">
+              <Ticket :ticket="ticket"/>
             </div>
+            <!-- <div
+              class="theme-search-results-item _mb-10 _b-n theme-search-results-item-rounded theme-search-results-item-"
+            >
+              <div class="theme-search-results-item-preview">
+                {{ results }}
+              </div>
+            </div> -->
           </div>
           <!-- <div class="col-md-2-5">
             <div class="sticky-col _mob-h">
@@ -179,14 +128,12 @@
 </template>
 
 <script>
-// import LeftSidebar from '~/components/Flight-Components/Left-sidebar'
-// import RightSidebar from '~/components/Flight-Components/Right-sidebar'
-// import Banner from '~/components/Flight-Components/Banner'
-import SearchMobile from '~/components/Flight/Search-mobile'
-import FilterMobile from '~/components/Flight/Filter-mobile'
-import SeachDesktop from '~/components/Flight/Search-Desktop'
-import Filters from '~/components/Filters'
-import Ticket from '~/components/Flight/Ticket'
+import SearchMobile from '../../components/Flight/Search-mobile'
+import FilterMobile from '../../components/Flight/Filter-mobile'
+import SeachDesktop from '../../components/Flight/Search-Desktop'
+import Filters from '../../components/Filters'
+import Ticket from '../../components/Flight/Ticket'
+import Loading from '../../components/loading.vue'
 
 export default {
   components: {
@@ -195,25 +142,24 @@ export default {
     SeachDesktop,
     Filters,
     Ticket,
-    //   LeftSidebar,
-    //   RightSidebar,
-    //   Banner,
+    Loading,
   },
-
-  // data() {
-  //   return {
-  //     show: false,
-  //   }
-  // },
-  // methods: {
-  //   toggle() {
-  //     this.show = !this.show
-  //   },
-  // },
+  data() {
+    return {
+      isLoading: true,
+      results: this.$store.state.results,
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.isLoading = false
+    }, 4500)
+  },
 }
 </script>
+
 <style scoped>
-.banner-bg {
-  background-image: url('~/static/img/architecture-bridge-buildings-calm-waters-427679_1500x800.jpg');
+.banner {
+  background-image: url('/img/architecture-bridge-buildings-calm-waters-427679_1500x800.jpg');
 }
 </style>

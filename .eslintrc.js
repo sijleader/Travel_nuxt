@@ -16,6 +16,7 @@ module.exports = {
     'vue/no-multiple-template-root': 'off',
     'vue/no-unused-vars': 'off',
     'vue/no-unused-components':'off',
+    'vue/no-parsing-error':'off',
     'nuxt/no-globals-in-created':'off',
     "object-shorthand": 0,
     "object-literal-shorthand": 0,

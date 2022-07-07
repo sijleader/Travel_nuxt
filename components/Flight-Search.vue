@@ -10,19 +10,12 @@
                 class="theme-search-area-section first theme-search-area-section-line"
               >
                 <div class="theme-search-area-section-inner">
-                  <!-- <search-select
+                  <search-select
                     v-model="departure"
                     :options="cities"
                     :filter-function="applySearchFilter"
                     placeholder="مبدا"
-                  ></search-select> -->
-                  <search-select
-                    v-model="departure"
-                    :options="new_cities"
-                    :filter-function="applySearchFilter"
-                    placeholder="مبدا"
                   ></search-select>
-                  <!-- {{ departure }} -->
                 </div>
               </div>
             </div>
@@ -34,19 +27,12 @@
                   <i
                     class="theme-search-area-section-icon lin lin-location-pin"
                   ></i>
-                  <!-- <search-select
+                  <search-select
                     v-model="destination"
                     :options="cities"
                     :filter-function="applySearchFilter"
                     placeholder="مقصد"
-                  ></search-select> -->
-                  <search-select
-                    v-model="destination"
-                    :options="new_cities"
-                    :filter-function="applySearchFilter"
-                    placeholder="مقصد"
                   ></search-select>
-                  <!-- {{ destination }} -->
                 </div>
               </div>
             </div>
@@ -238,24 +224,23 @@
         </div>
         <!-- submit button -->
         <div class="col-md-1">
-          <nuxt-link to="/flights">
-            <!-- <button
-              class="theme-search-area-submit _mt-0 _fs-xl theme-search-area-submit-curved theme-search-area-submit-primary theme-search-area-submit-glow"
-            >
-              ←
-            </button> -->
-            <button
-              class="theme-search-area-submit _mt-0 _fs-xl theme-search-area-submit-curved theme-search-area-submit-primary theme-search-area-submit-glow"
-              @click.prevent="onsubmit"
-              type="submit"
-            >
-              ←
-            </button>
-          </nuxt-link>
+          <button
+            class="theme-search-area-submit _mt-0 _fs-xl theme-search-area-submit-curved theme-search-area-submit-primary theme-search-area-submit-glow"
+            @click.prevent="onsubmit"
+            type="submit"
+          >
+            ←
+            <!-- <Loading v-if="isLoading"></Loading> -->
+          </button>
         </div>
       </div>
     </div>
-    <div class="theme-search-area-options clearfix">
+    <div dir="ltr">
+      <!-- {{ results }} -->
+      <hr>
+      {{$cookies.get('SessionID')}}
+    </div>
+    <!-- <div class="theme-search-area-options clearfix">
       <div
         class="btn-group theme-search-area-options-list"
         data-bs-toggle="buttons"
@@ -264,20 +249,20 @@
         <input v-model="selected" type="radio" value="two-way" checked="" />رفت
         و برگشت
       </div>
-    </div>
-    <!-- <div dir="ltr">
-      {{ new_cities }}
     </div> -->
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import PersianDate from '@alireza-ab/persian-date'
 import SearchSelect from '~/components/test/SearchSelect.vue'
+// import Loading from '~/components/loading.vue'
 
 export default {
   components: {
     SearchSelect,
+    // Loading,
   },
   props: ['options'],
   data() {
@@ -293,11 +278,11 @@ export default {
       departure: null,
       destination: null,
       search: '',
-      cities: ['MHD', 'THR', 'BIJ', 'SHR'],
-      // cities: null,
-      result: null,
-      info: null,
+      cities: null,
+      results: null,
       new_cities: [],
+      SessionID:null
+      // isLoading: true,
     }
   },
   computed: {
@@ -322,14 +307,17 @@ export default {
       },
     })
       .then((response) => {
-        const cities = response.data.FLIGHTSCITIES
-        for (let i = 0; i < cities.length; i++) {
-          this.new_cities.push(cities[i].cities_value)
+        this.cities = response.data.FLIGHTSCITIES
+        for (let i = 0; i < this.cities.length; i++) {
+          this.new_cities.push(this.cities[i].cities_value)
         }
       })
       .catch((error) => {
         console.log(error)
       })
+    // setTimeout(() => {
+    //   this.isLoading = false
+    // }, 4500)
   },
   methods: {
     addAdult() {
@@ -366,9 +354,30 @@ export default {
       this.isOpen = !this.isOpen
     },
     applySearchFilter(search, cities) {
+      cities = this.new_cities
       return cities.filter((city) =>
         city.toLowerCase().includes(search.toLowerCase())
       )
+    },
+    getCities() {
+      const token =
+        'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2UyNzdhYTBmMDE4N2Y2M2U3MTExYzIxNTcwODUwNWQ1NGViN2M1NTIyMWVhOTBiYWVjNjg1NDE2YjMwNjBmMjQzODdhNzdjMTE0MTEzNWEiLCJpYXQiOjE2NTUyOTE1MjAuNjgxMDQzLCJuYmYiOjE2NTUyOTE1MjAuNjgxMDQ2LCJleHAiOjE2ODY4Mjc1MjAuNTUzNDE3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kpXB2kb9huAbclEktVHpooynVfQ-FzERbFHbTv-UvlzJIDNAsl8JC7myE8ozU-wwvuphx6TqLB_e0X0DoJVB22Z6pjx-VRHt1rzhhR4WO9eI1_Q1UU7LnerOY6viUgxgkgxrpitRRIWz7KwyZW_v-yHiK0oZ3p_rUitd4ABDVw5zv2ryvoT7NJ3HQjQkiTCHE3jehu0qkCQtVGbM-6Z9-7XrFcL_5pK818Iu53YxJZZuV6DYt2Dm_e2qk7SX0Y31YrlysVSVJZW4awEIokYcjOe_oeD1LGFIB-qTnTivSQar-BPUmouUXOYCyMXINrYtQBlRhyT9I9kmLNNOegFi88EwYVGbJ38uj9SKZ3C9Fr0o-fyQm69WEoOQ0qrKDxXgnbxZxPDAbmctCWysWouZVhMBxFUHsKbT-5oY88TOVdEDBkpp_3JFsDmmA8zpotvLQZw765anyEP_1ZDzh6xm8evq9fXNT4IoRAnwYqPuaWxyWoEuAiN2r5ld4m_7fGJzjG99IafvUD1Do9vuP_mkArrW0OTDeN5YZaGESlrheyuIgFPX2usnvaPcnoXJumdQyEcZxSQ57icCB7FKp4Nh0QQcw2tKUSHJ4F_xydoaD4ptzkNf6UAjeFlQ4tQ4B79ommzK0VLAC9mmilcBFocqhh7QPJgJAswErS8bLR0DzrI'
+      axios({
+        method: 'get',
+        url: '/citieslist',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => {
+          this.cities = response.data.FLIGHTSCITIES
+          for (let i = 0; i < this.cities.length; i++) {
+            this.new_cities.push(this.cities[i].cities_value)
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     onsubmit() {
       const token =
@@ -377,23 +386,42 @@ export default {
         method: 'post',
         url: '/search',
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: 'Bearer ' + token,
         },
         data: {
           AdultCount: this.adult,
           ChildCount: this.child,
           InfantCount: this.infant,
-          OriginLocationCode: this.departure,
-          DestinationLocationCode: this.destination,
+          OriginLocationCode: this.departure.split(' - ')[1],
+          DestinationLocationCode: this.destination.split(' - ')[1],
           DepartureDateTime: this.start,
         },
       })
         .then((response) => {
-          this.result = response.data
-          console.log('response', response)
+          this.$store.state.results = response.data.FLIGHTS_API_LIST
+          this.$store.state.SessionID = response.data.SESSIONID
+          this.$router.push({
+            path: 'flights',
+            query: {
+              Route:
+                this.departure.split(' - ')[1] +
+                '-' +
+                this.destination.split(' - ')[1],
+              DepartureDate: new PersianDate(this.start)
+                .calendar('jalali')
+                .toString('?YYYY-?MM-?DD'),
+              AdultCount: this.adult,
+              ChildCount: this.child,
+              InfantCount: this.infant,
+            },
+          })
+          this.$cookies.set('SessionID', response.data.SESSIONID, {
+            maxAge: 60 * 15,
+          })
+          console.log('response', response.data)
         })
         .catch((error) => {
-          console.log('error', error)
+          console.log('error', error.response)
         })
     },
   },

@@ -5,7 +5,7 @@
     <div class="theme-search-results-item-preview">
       <a
         class="theme-search-results-item-mask-link"
-        href="#searchResultsItem-1"
+        v-b-toggle="ticket.FareSourceCode"
         role="button"
         data-bs-toggle="collapse"
         aria-expanded="false"
@@ -21,7 +21,7 @@
                   >
                     <img
                       class="theme-search-results-item-flight-section-airline-logo"
-                      src="~/static/img/airline-logo/delta.jpg"
+                      src="/img/airline-logo/delta.jpg"
                       alt="تصویر متن جایگزین"
                       title="عنوان تصویر"
                     />
@@ -37,29 +37,47 @@
                           <p
                             class="theme-search-results-item-flight-section-meta-time"
                           >
-                            ساعت 03:30
-                            <span>بعد از ظهر</span>
+                            ساعت
+                            {{
+                              hour(
+                                ticket.OriginDestinationOptions[0]
+                                  .DepartureDateTime
+                              )
+                            }}
                           </p>
                           <p
                             class="theme-search-results-item-flight-section-meta-city"
                           >
-                            لندن
+                            {{
+                              ticket.OriginDestinationOptions[0]
+                                .DepartureAirportLocationCode
+                            }}
                           </p>
                           <p
                             class="theme-search-results-item-flight-section-meta-date"
                           >
-                            17 مه 1400
+                            {{
+                              date(
+                                ticket.OriginDestinationOptions[0]
+                                  .DepartureDateTime
+                              )
+                            }}
                           </p>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-4">
                         <div
                           class="theme-search-results-item-flight-section-path"
                         >
                           <div
                             class="theme-search-results-item-flight-section-path-fly-time"
                           >
-                            <p>20 ساعت 0 دقیقه</p>
+                            <p>
+                              {{
+                                ticket.OriginDestinationOptions[0]
+                                  .JourneyDuration
+                              }}
+                            </p>
                           </div>
                           <div
                             class="theme-search-results-item-flight-section-path-line"
@@ -103,29 +121,61 @@
                           <p
                             class="theme-search-results-item-flight-section-meta-time"
                           >
-                            ساعت 11:30
-                            <span>صبح</span>
+                            ساعت
+                            {{
+                              hour(
+                                ticket.OriginDestinationOptions[0]
+                                  .ArrivalDateTime
+                              )
+                            }}
                           </p>
                           <p
                             class="theme-search-results-item-flight-section-meta-city"
                           >
-                            نیویورک
+                            {{
+                              ticket.OriginDestinationOptions[0]
+                                .ArrivalAirportLocationCode
+                            }}
                           </p>
                           <p
                             class="theme-search-results-item-flight-section-meta-date"
                           >
-                            18 مه 1400
+                            {{
+                              date(
+                                ticket.OriginDestinationOptions[0]
+                                  .ArrivalDateTime
+                              )
+                            }}
                           </p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="theme-search-results-item-book">
+                          <div class="theme-search-results-item-price">
+                            <p
+                              class="theme-search-results-item-flight-section-meta-time"
+                            >
+                              {{
+                                ticket.OriginDestinationOptions[0]
+                                  .SeatsRemaining
+                              }}
+                              ظرفیت خالی
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <h5
-                class="theme-search-results-item-flight-section-airline-title"
-              >
-                توسط خطوط هوایی دلتا اداره می شود
+              <h5 class="theme-search-results-item-price-tag">
+                <ul
+                  class="theme-search-results-item-flight-details-schedule-features"
+                >
+                  <li>9253 دلتا</li>
+                  <li>جت پهن پیکر</li>
+                  <li>امبر 175</li>
+                </ul>
               </h5>
             </div>
           </div>
@@ -133,26 +183,47 @@
         <div class="col-md-2">
           <div class="theme-search-results-item-book">
             <div class="theme-search-results-item-price">
-              <p class="theme-search-results-item-price-tag">279 تومان</p>
-              <p class="theme-search-results-item-price-sign">اقتصاد</p>
+              <p class="theme-search-results-item-price-tag">
+                {{ ticket.AirItineraryPricingInfo.ItinTotalFare.TotalFare }}
+                تومان
+              </p>
             </div>
             <nuxt-link
               class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn"
-              to="/flights/checkout"
+              :to="{
+                path: '/checkout',
+                // query: {
+                //   Path:
+                //     ticket.OriginDestinationOptions[0]
+                //       .DepartureAirportLocationCode +
+                //     '-' +
+                //     ticket.OriginDestinationOptions[0]
+                //       .ArrivalAirportLocationCode,
+                // },
+                params: {
+                  Path:
+                    ticket.OriginDestinationOptions[0]
+                      .DepartureAirportLocationCode +
+                    '-' +
+                    ticket.OriginDestinationOptions[0]
+                      .ArrivalAirportLocationCode,
+                  FareSourceCode: ticket.FareSourceCode,
+                },
+              }"
               >رزرو کن</nuxt-link
             >
           </div>
         </div>
       </div>
     </div>
-    <div
-      id="searchResultsItem-1"
+    <b-collapse
+      :id="ticket.FareSourceCode"
       class="collapse theme-search-results-item-collapse"
     >
       <div class="theme-search-results-item-extend">
         <a
           class="theme-search-results-item-extend-close"
-          href="#searchResultsItem-1"
+          v-b-toggle="ticket.FareSourceCode"
           role="button"
           data-bs-toggle="collapse"
           aria-expanded="false"
@@ -271,13 +342,6 @@
                             </p>
                           </div>
                         </div>
-                        <ul
-                          class="theme-search-results-item-flight-details-schedule-features"
-                        >
-                          <li>9253 دلتا</li>
-                          <li>جت پهن پیکر</li>
-                          <li>امبر 175</li>
-                        </ul>
                       </li>
                     </ul>
                   </div>
@@ -287,6 +351,32 @@
           </div>
         </div>
       </div>
-    </div>
+    </b-collapse>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    ticket: {
+      type: Object,
+      required: true,
+    },
+  },
+  methods: {
+    hour(datetime) {
+      const date = new Date(datetime).toLocaleTimeString('fa-IR-u-nu-latn', {
+        hour: 'numeric',
+        minute: '2-digit',
+      })
+      return date
+    },
+    date(datetime) {
+      const date = new Intl.DateTimeFormat('fa-IR', {
+        dateStyle: 'medium',
+      }).format(new Date(datetime))
+      return date
+    },
+  },
+}
+</script>

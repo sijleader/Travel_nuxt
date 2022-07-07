@@ -8,69 +8,31 @@
     <hr />
     <div>
       <pre dir="ltr">
-        {{ cities }}
+        {{ hour("2022-07-09T18:00:00")}}
+        <!-- {{moment("2022/07/09")}} -->
+        <!-- {{new Intl.DateTimeFormat('fa-IR', {dateStyle: 'full'}).format(new Date("2022/07/09"))}} -->
+        <!-- {{ hour("2022-07-09T08:42:00").getTime()}} -->
       </pre>
-    <hr>
-    <!-- <div v-for="city in cities" :key="city.id">
-      {{city.cities_value}}
-    </div> -->
+      <hr />
+
     </div>
     <hr />
-    <!-- <div>
-    <p>window width: {{ $windowWidth }}</p>
-    <p>window height: {{ $windowHeight }}</p>
-  </div> -->
-    <!-- <div id="map-wrap" style="height: 100vh">
-      <client-only>
-        <l-map :zoom="130" :center="[36.31095, 59.54853]">
-          <l-tile-layer
-            url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-          ></l-tile-layer>
-          <l-marker :lat-lng="[36.31095, 59.54853]"></l-marker>
-        </l-map>
-      </client-only>
-    </div> -->
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import Vue2Filters from 'vue2-filters'
 // import GridMultiSelect from 'vue-gridmultiselect'
 import 'vue-gridmultiselect/dist/vue-gridmultiselect.css'
 // import { vueWindowSizeMixin } from 'vue-window-size/option-api'
 // import { useWindowSize } from 'vue-window-size';
-
+// import moment from 'vue-jalali-moment'
+// import Vue from 'vue'
+// Vue.use(require('vue-jalali-moment'))
 export default {
-  // components: { GridMultiSelect },
   mixins: [Vue2Filters.mixin],
-  // vuetify: new Vuetify(),
   layout: 'test',
-  // setup() {
-  //   const { width, height } = useWindowSize();
-  //   return {
-  //     windowWidth: width,
-  //     windowHeight: height,
-  //   };
-  // },
-  // async AsyncData() {
-  //   const token =
-  //     'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2UyNzdhYTBmMDE4N2Y2M2U3MTExYzIxNTcwODUwNWQ1NGViN2M1NTIyMWVhOTBiYWVjNjg1NDE2YjMwNjBmMjQzODdhNzdjMTE0MTEzNWEiLCJpYXQiOjE2NTUyOTE1MjAuNjgxMDQzLCJuYmYiOjE2NTUyOTE1MjAuNjgxMDQ2LCJleHAiOjE2ODY4Mjc1MjAuNTUzNDE3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kpXB2kb9huAbclEktVHpooynVfQ-FzERbFHbTv-UvlzJIDNAsl8JC7myE8ozU-wwvuphx6TqLB_e0X0DoJVB22Z6pjx-VRHt1rzhhR4WO9eI1_Q1UU7LnerOY6viUgxgkgxrpitRRIWz7KwyZW_v-yHiK0oZ3p_rUitd4ABDVw5zv2ryvoT7NJ3HQjQkiTCHE3jehu0qkCQtVGbM-6Z9-7XrFcL_5pK818Iu53YxJZZuV6DYt2Dm_e2qk7SX0Y31YrlysVSVJZW4awEIokYcjOe_oeD1LGFIB-qTnTivSQar-BPUmouUXOYCyMXINrYtQBlRhyT9I9kmLNNOegFi88EwYVGbJ38uj9SKZ3C9Fr0o-fyQm69WEoOQ0qrKDxXgnbxZxPDAbmctCWysWouZVhMBxFUHsKbT-5oY88TOVdEDBkpp_3JFsDmmA8zpotvLQZw765anyEP_1ZDzh6xm8evq9fXNT4IoRAnwYqPuaWxyWoEuAiN2r5ld4m_7fGJzjG99IafvUD1Do9vuP_mkArrW0OTDeN5YZaGESlrheyuIgFPX2usnvaPcnoXJumdQyEcZxSQ57icCB7FKp4Nh0QQcw2tKUSHJ4F_xydoaD4ptzkNf6UAjeFlQ4tQ4B79ommzK0VLAC9mmilcBFocqhh7QPJgJAswErS8bLR0DzrI'
-
-  //   const {cities} = await axios
-  //     .get('/citieslist', {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       console.log( response.data)
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //     })
-  //   return {cities:cities}
-  // },
   data() {
     return {
       users: [
@@ -169,6 +131,7 @@ export default {
         { index: 26, age: 26, name: 'Gamble Moore', gender: 'male' },
       ],
       cities: null,
+      date: null,
     }
   },
   computed: {
@@ -178,6 +141,7 @@ export default {
         (user) => user.age >= 16 && user.age < 60
       )
     },
+
     // Differ() {
     //   const date = new PersianDate([1400, 1, 1], 'jalali')
 
@@ -185,27 +149,32 @@ export default {
 
     // },
   },
-  
-  mounted() {
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjYxM2NiZGRhZWI1Njk5MmIzZTMxMjBlZTg2YTkzNmUzZDU4Y2RmYmYxNzZiNWJlYjQzOGM1NjM1N2I2MDkyNTE2YWFhNmE3MGViM2ZhNTMiLCJpYXQiOjE2NTU1MzQ0NzQuMzQ1NDcxLCJuYmYiOjE2NTU1MzQ0NzQuMzQ1NDc0LCJleHAiOjE2ODcwNzA0NzQuMDkzNTkxLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.pfYV5p68w-2egmftUwXMI4liB5W_6r3w5szjOgUMMmWEXM_GbNA1WZgLYs7uiOHADZ_r3Gm8vYPmV0-GLmLkdckDY-Sqlup-9zmMGMtadjmOnvmR5HBbUNegBZmhi7NjJ_4OP7sgRH6tw1dEbUPXOCnBSBtXqpIHc237XKRmGndg12lvXoqfbSCfqcpS9wID8wCBQVqSfcyIT3BcfQiWhscUNUGCWGM9L-W8Bdjt-qIzE24uIsbk7_8kUa1o6K-GnPNqmL6J_ZnDnP93HzYl24TDvSzVDbBHbhKXXBppFf2WeaJnVqVre3av1m_sJ4y3wl94L1hSnjRH1G_J613p9VUKid4r2QyLX1eXAvVgeqHOQfGEwxlDqvSgCdW_xzR7JkN63Fy9b2JHdgsJfE2Df4btyCcTfW6gL99YDl42z7oRzdx5QJOrD6RCc2QALRagLT7AC_KfxdVRbYEM81YWp-8Kbd3PQS8sJEE8vKIf_OfkA-r2kG7kDeopIt-cIJHIMwu-7ECaoNCVM4L3k1dJuvsHrJeE2duxoa9lmAHd-SCiUa2qHyRYkWFcwxuK2_H7cbOfSl-Sd6ialoNZIWiK118ICWHAz204zOIQM5H8ba8LVFMeg-S9p5atCkVjj5mZZkBIFJj5ccgCmLQ_Gk3xwP4sAkQAgE_G-N_mRMWFEE0'
-
-    axios.get('/citieslist',
-    {
-      headers: {
-          Authorization: `Bearer ${token}`,
-        },
-    }
-    )
-      .then(response => {
-        this.cities = response.data.FLIGHTSCITIES
-        console.log(response.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  methods: {
+    hour(datetime) {
+      const date = new Intl.DateTimeFormat('fa-IR', {dateStyle: 'full'}).format(new Date(datetime))
+      return date
+    },
   },
   // mounted() {
-  //   this.date = this.$PersianDate.clone().month(5).toString()
+  //   const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjYxM2NiZGRhZWI1Njk5MmIzZTMxMjBlZTg2YTkzNmUzZDU4Y2RmYmYxNzZiNWJlYjQzOGM1NjM1N2I2MDkyNTE2YWFhNmE3MGViM2ZhNTMiLCJpYXQiOjE2NTU1MzQ0NzQuMzQ1NDcxLCJuYmYiOjE2NTU1MzQ0NzQuMzQ1NDc0LCJleHAiOjE2ODcwNzA0NzQuMDkzNTkxLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.pfYV5p68w-2egmftUwXMI4liB5W_6r3w5szjOgUMMmWEXM_GbNA1WZgLYs7uiOHADZ_r3Gm8vYPmV0-GLmLkdckDY-Sqlup-9zmMGMtadjmOnvmR5HBbUNegBZmhi7NjJ_4OP7sgRH6tw1dEbUPXOCnBSBtXqpIHc237XKRmGndg12lvXoqfbSCfqcpS9wID8wCBQVqSfcyIT3BcfQiWhscUNUGCWGM9L-W8Bdjt-qIzE24uIsbk7_8kUa1o6K-GnPNqmL6J_ZnDnP93HzYl24TDvSzVDbBHbhKXXBppFf2WeaJnVqVre3av1m_sJ4y3wl94L1hSnjRH1G_J613p9VUKid4r2QyLX1eXAvVgeqHOQfGEwxlDqvSgCdW_xzR7JkN63Fy9b2JHdgsJfE2Df4btyCcTfW6gL99YDl42z7oRzdx5QJOrD6RCc2QALRagLT7AC_KfxdVRbYEM81YWp-8Kbd3PQS8sJEE8vKIf_OfkA-r2kG7kDeopIt-cIJHIMwu-7ECaoNCVM4L3k1dJuvsHrJeE2duxoa9lmAHd-SCiUa2qHyRYkWFcwxuK2_H7cbOfSl-Sd6ialoNZIWiK118ICWHAz204zOIQM5H8ba8LVFMeg-S9p5atCkVjj5mZZkBIFJj5ccgCmLQ_Gk3xwP4sAkQAgE_G-N_mRMWFEE0'
+
+  //   axios.get('/citieslist',
+  //   {
+  //     headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //   }
+  //   )
+  //     .then(response => {
+  //       this.cities = response.data.FLIGHTSCITIES
+  //       console.log(response.data)
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // },
+  // mounted() {
+  //   this.date = this.hour('2022-07-09T08:42:00')
   // },
 }
 </script>
