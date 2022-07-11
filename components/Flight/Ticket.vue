@@ -188,30 +188,35 @@
                 تومان
               </p>
             </div>
-            <nuxt-link
+            <!-- <nuxt-link
               class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn"
-              :to="{
-                path: '/checkout',
-                // query: {
-                //   Path:
-                //     ticket.OriginDestinationOptions[0]
-                //       .DepartureAirportLocationCode +
-                //     '-' +
-                //     ticket.OriginDestinationOptions[0]
-                //       .ArrivalAirportLocationCode,
-                // },
-                params: {
-                  Path:
-                    ticket.OriginDestinationOptions[0]
+              :to="$router.push(`/flights/${ticket.OriginDestinationOptions[0]
                       .DepartureAirportLocationCode +
                     '-' +
                     ticket.OriginDestinationOptions[0]
-                      .ArrivalAirportLocationCode,
-                  FareSourceCode: ticket.FareSourceCode,
-                },
-              }"
-              >رزرو کن</nuxt-link
+                      .ArrivalAirportLocationCode}/checkout/${ticket.FareSourceCode}`)"
+              type="submit"
             >
+              رزرو کن
+            </nuxt-link> -->
+            <!-- <button
+              class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn"
+              @click="$router.push(`/flights/${ticket.OriginDestinationOptions[0]
+                      .DepartureAirportLocationCode +
+                    '-' +
+                    ticket.OriginDestinationOptions[0]
+                      .ArrivalAirportLocationCode}/checkout/${ticket.FareSourceCode}`)"
+              type="submit"
+            >
+              رزرو کن
+            </button> -->
+            <a
+              class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn"
+              @click.prevent="book"
+              type="submit"
+            >
+              رزرو کن
+            </a>
           </div>
         </div>
       </div>
@@ -230,6 +235,7 @@
           >✕</a
         >
         <div class="theme-search-results-item-extend-inner">
+          <!-- {{this.$store.state.TicketInfo}} -->
           <div class="theme-search-results-item-flight-detail-items">
             <div class="theme-search-results-item-flight-details">
               <div class="row">
@@ -356,12 +362,19 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   props: {
     ticket: {
       type: Object,
       required: true,
     },
+  },
+  data() {
+    return {
+      ticketInfo: null,
+    }
   },
   methods: {
     hour(datetime) {
@@ -376,6 +389,39 @@ export default {
         dateStyle: 'medium',
       }).format(new Date(datetime))
       return date
+    },
+    book() {
+      const token =
+        'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2UyNzdhYTBmMDE4N2Y2M2U3MTExYzIxNTcwODUwNWQ1NGViN2M1NTIyMWVhOTBiYWVjNjg1NDE2YjMwNjBmMjQzODdhNzdjMTE0MTEzNWEiLCJpYXQiOjE2NTUyOTE1MjAuNjgxMDQzLCJuYmYiOjE2NTUyOTE1MjAuNjgxMDQ2LCJleHAiOjE2ODY4Mjc1MjAuNTUzNDE3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kpXB2kb9huAbclEktVHpooynVfQ-FzERbFHbTv-UvlzJIDNAsl8JC7myE8ozU-wwvuphx6TqLB_e0X0DoJVB22Z6pjx-VRHt1rzhhR4WO9eI1_Q1UU7LnerOY6viUgxgkgxrpitRRIWz7KwyZW_v-yHiK0oZ3p_rUitd4ABDVw5zv2ryvoT7NJ3HQjQkiTCHE3jehu0qkCQtVGbM-6Z9-7XrFcL_5pK818Iu53YxJZZuV6DYt2Dm_e2qk7SX0Y31YrlysVSVJZW4awEIokYcjOe_oeD1LGFIB-qTnTivSQar-BPUmouUXOYCyMXINrYtQBlRhyT9I9kmLNNOegFi88EwYVGbJ38uj9SKZ3C9Fr0o-fyQm69WEoOQ0qrKDxXgnbxZxPDAbmctCWysWouZVhMBxFUHsKbT-5oY88TOVdEDBkpp_3JFsDmmA8zpotvLQZw765anyEP_1ZDzh6xm8evq9fXNT4IoRAnwYqPuaWxyWoEuAiN2r5ld4m_7fGJzjG99IafvUD1Do9vuP_mkArrW0OTDeN5YZaGESlrheyuIgFPX2usnvaPcnoXJumdQyEcZxSQ57icCB7FKp4Nh0QQcw2tKUSHJ4F_xydoaD4ptzkNf6UAjeFlQ4tQ4B79ommzK0VLAC9mmilcBFocqhh7QPJgJAswErS8bLR0DzrI'
+      axios({
+        method: 'post',
+        url: '/airrevalidate',
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+        data: {
+          SessionId: this.$store.state.SessionID,
+          FareSourceCode: this.ticket.FareSourceCode,
+        },
+      })
+        .then((response) => {
+          this.ticketInfo = response.data.PricedItinerary
+          this.$router.push({
+            path: `/flights/${
+              this.ticket.OriginDestinationOptions[0]
+                .DepartureAirportLocationCode +
+              '-' +
+              this.ticket.OriginDestinationOptions[0].ArrivalAirportLocationCode
+            }/checkout/`,
+            query: {
+              FareSourceCode: this.ticket.FareSourceCode
+            },
+          })
+          console.log('response', response.data)
+        })
+        .catch((error) => {
+          console.log('error', error.response)
+        })
     },
   },
 }

@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Adt",
+    "Value": "1",
+    "Description": "Adult"
+  },
+  {
+    "Name": "Chd",
+    "Value": "2",
+    "Description": "Child"
+  },
+  {
+    "Name": "Inf",
+    "Value": "3",
+    "Description": "Infant"
+  }
+]

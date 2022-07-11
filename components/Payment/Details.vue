@@ -156,7 +156,7 @@
           <div class="theme-search-results-item-img-wrap">
             <img
               class="theme-search-results-item-img _mob-h"
-              src="~/static/img/airline-logo/aa.jpg"
+              src="/img/airline-logo/aa.jpg"
             />
           </div>
         </div>
@@ -164,3 +164,16 @@
     </div>
   </div>
 </template>
+
+<script>
+
+export default{
+  props:{
+    details:{
+      type:Object,
+      required:true
+    }
+  }
+}
+
+</script>

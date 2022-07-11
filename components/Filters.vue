@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="theme-search-results-sidebar-section">
+    <!-- <div class="theme-search-results-sidebar-section">
       <h5 class="theme-search-results-sidebar-section-title">کلاس پرواز</h5>
       <div class="theme-search-results-sidebar-section-checkbox-list">
         <div class="theme-search-results-sidebar-section-checkbox-list-items">
@@ -18,21 +18,7 @@
           <span class="icheck-title"> {{ classselected }} :class </span>
         </div>
       </div>
-    </div>
-    <div class="theme-search-results-sidebar-section">
-      <h5 class="theme-search-results-sidebar-section-title">بازه قیمت</h5>
-      <div class="theme-search-results-sidebar-section-price">
-        <b-form-input
-          id="range-2"
-          v-model="value"
-          type="range"
-          min="0"
-          max="5"
-          step="0.5"
-        ></b-form-input>
-        <div class="icheck-title">Value: {{ value }}</div>
-      </div>
-    </div>
+    </div> -->
     <div class="theme-search-results-sidebar-section">
       <h5 class="theme-search-results-sidebar-section-title">خطوط هوایی</h5>
       <div class="theme-search-results-sidebar-section-checkbox-list">
@@ -59,6 +45,21 @@
         </div>
       </div>
     </div>
+    <div class="theme-search-results-sidebar-section">
+      <h5 class="theme-search-results-sidebar-section-title">بازه قیمت</h5>
+      <div class="theme-search-results-sidebar-section-price">
+        <b-form-input
+          id="range-2"
+          v-model="value"
+          type="range"
+          min="0"
+          max="5"
+          step="0.5"
+        ></b-form-input>
+        <div class="icheck-title">Value: {{ value }}</div>
+      </div>
+    </div>
+    
   </div>
 </template>
 

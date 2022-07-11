@@ -76,7 +76,7 @@ export default {
       this.$nextTick(() => {
         this.setupPopper()
         this.$refs.search.focus()
-        this.scrollToHighlighted()
+        // this.scrollToHighlighted()
       })
     },
     setupPopper() {
@@ -104,11 +104,11 @@ export default {
     selectHighlighted() {
       this.select(this.filteredOptions[this.highlightedIndex])
     },
-    scrollToHighlighted() {
-      this.$refs.options.children[this.highlightedIndex].scrollIntoView({
-        block: 'nearest',
-      })
-    },
+    // scrollToHighlighted() {
+    //   this.$refs.options.children[this.highlightedIndex].scrollIntoView({
+    //     block: 'nearest',
+    //   })
+    // },
     highlight(index) {
       this.highlightedIndex = index
       if (this.highlightedIndex < 0) {
@@ -117,7 +117,7 @@ export default {
       if (this.highlightedIndex > this.filteredOptions.length - 1) {
         this.highlightedIndex = 0
       }
-      this.scrollToHighlighted()
+      // this.scrollToHighlighted()
     },
     highlightPrev() {
       this.highlight(this.highlightedIndex - 1)

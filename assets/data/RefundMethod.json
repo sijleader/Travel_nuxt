@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Offline",
+    "Value": "0",
+    "Description": ""
+  },
+  {
+    "Name": "Online",
+    "Value": "1",
+    "Description": ""
+  },
+  {
+    "Name": "NonRefundable",
+    "Value": "2",
+    "Description": ""
+  }
+]

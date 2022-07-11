@@ -17,7 +17,10 @@ export const store = () => {
       token: null,
       sessionid: [],
       results: null,
-      SessionID:null
+      SessionID:null,
+      TicketInfo:null,
+      cities:[],
+      passengers:[]
       // }
     },
     mutations: {

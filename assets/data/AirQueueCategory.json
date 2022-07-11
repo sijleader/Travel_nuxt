@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Booked",
+    "value": "10",
+    "description": "Booked"
+  },
+  {
+    "name": "TicketinProcess",
+    "value": "20",
+    "description": "Ticket in Process"
+  },
+  {
+    "name": "Ticketed",
+    "value": "21",
+    "description": "Ticketed"
+  },
+  {
+    "name": "Cancelled",
+    "value": "30",
+    "description": "Cancelled"
+  },
+  {
+    "name": "Exception",
+    "value": "40",
+    "description": "Not Booked"
+  }
+]

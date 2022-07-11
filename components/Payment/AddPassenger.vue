@@ -1,6 +1,7 @@
 <template>
   <div class="theme-payment-page-form">
     <h3 class="theme-payment-page-form-title">اطلاعات مسافر</h3>
+    {{isValidIranianNationalCode("0913123456")}}
     <div class="row row-col-gap" data-gutter="20">
       <div class="col-md-3">
         <div class="theme-payment-page-form-item form-group">
@@ -123,7 +124,13 @@
               </button>
             </div>
             <div class="col-xs-8 col-md-6 parent-of-confirm-edit">
-              <button class="btn btn-primary btn-block">ثبت</button>
+              <button
+                @click.prevent="addPassenger()"
+                class="btn btn-primary btn-block"
+                type="submit"
+              >
+                ثبت
+              </button>
             </div>
           </div>
         </div>
@@ -147,25 +154,35 @@ export default {
       passport_id: '',
       passport_issue: '',
       passport_expire: '',
-      passenger: [
-        {
-          latin_fname: '',
-          latin_lname: '',
-          persian_fname: '',
-          persian_lname: '',
-          sex: '',
-          national_id: '',
-          birthday_date: '',
-          birthday_country: '',
-          passport_id: '',
-          passport_issue: '',
-          passport_expire: '',
-        },
-      ],
     }
   },
   methods: {
-    addPassenger() {},
+    isValidIranianNationalCode(input) {
+      if (!/^\d{10}$/.test(input)) return false
+      const check = +input[9]
+      const sum =
+        input
+          .split('')
+          .slice(0, 9)
+          .reduce((acc, x, i) => acc + +x * (10 - i), 0) % 11
+      return sum < 2 ? check === sum : check + sum === 11
+    },
+    addPassenger() {
+      const passengerData = {
+        FirstName: this.persian_fname,
+        LastName: this.persian_lname,
+        FirstNameE: this.latin_fname,
+        LastNameE: this.latin_lname,
+        pGender: this.sex,
+        meliCode: this.national_id,
+        birthday: this.birthday_date,
+        nationality: this.birthday_country,
+        passNumber: this.passport_id,
+        passport_issue: this.passport_issue,
+        exPass: this.passport_expire,
+      }
+      this.$store.state.passengers.push(passengerData)
+    },
   },
 }
 </script>

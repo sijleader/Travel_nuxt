@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Booked",
+    "value": "10",
+    "description": "Booked"
+  },
+  {
+    "name": "Pending",
+    "value": "11",
+    "description": "Pending"
+  },
+  {
+    "name": "Waitlist",
+    "value": "12",
+    "description": "Waitlist"
+  },
+  {
+    "name": "TicketinProcess",
+    "value": "20",
+    "description": "Ticket in Process"
+  },
+  {
+    "name": "Ticketed",
+    "value": "21",
+    "description": "Ticketed"
+  },
+  {
+    "name": "TicketedChanged",
+    "value": "22",
+    "description": "Ticketed-Changed"
+  },
+  {
+    "name": "TicketedScheduleChange",
+    "value": "23",
+    "description": "Ticketed-Schedule Changed"
+  },
+  {
+    "name": "TicketedCancelled",
+    "value": "24",
+    "description": "Ticketed-Cancelled"
+  },
+  {
+    "name": "TicketedVoid",
+    "value": "25",
+    "description": "Ticketed-Void"
+  },
+  {
+    "name": "Cancelled",
+    "value": "30",
+    "description": "Cancelled"
+  },
+  {
+    "name": "Exception",
+    "value": "40",
+    "description": "Not Booked"
+  },
+  {
+    "name": "Gateway",
+    "value": "41",
+    "description": "Not Booked"
+  },
+  {
+    "name": "Duplicate",
+    "value": "42",
+    "description": "Not Booked"
+  }
+]
