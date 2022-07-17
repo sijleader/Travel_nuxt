@@ -241,25 +241,27 @@
               <div class="row">
                 <div class="col-md-3">
                   <div class="theme-search-results-item-flight-details-info">
-                    <h5
+                    <!-- <h5
                       class="theme-search-results-item-flight-details-info-title"
                     >
                       رفتن
-                    </h5>
+                    </h5> -->
                     <p
                       class="theme-search-results-item-flight-details-info-date"
                     >
-                      دوشنبه 15 آبان
+                      <!-- دوشنبه 15 آبان -->
+                      {{ AirTripType[ticket.DirectionInd] }}
                     </p>
-                    <p
+                    <!-- <p
                       class="theme-search-results-item-flight-details-info-cities"
                     >
                       لندن ← نیویورک
-                    </p>
+                    </p> -->
                     <p
                       class="theme-search-results-item-flight-details-info-fly-time"
                     >
-                      20 ساعت 0 دقیقه
+                      <!-- 20 ساعت 0 دقیقه -->
+                      {{ RefundMethod[ticket.RefundMethod] }}
                     </p>
                     <p
                       class="theme-search-results-item-flight-details-info-stops"
@@ -362,8 +364,10 @@
 </template>
 
 <script>
-import axios from 'axios'
-
+// import axios from 'axios'
+import AirTripType from '../../assets/data/AirTripType.json'
+import PassengerType from '../../assets/data/PassengerType.json'
+import RefundMethod from '../../assets/data/RefundMethod.json'
 export default {
   props: {
     ticket: {
@@ -373,16 +377,21 @@ export default {
   },
   data() {
     return {
-      ticketInfo: null,
+      PassengerType: PassengerType,
+      AirTripType: AirTripType,
+      RefundMethod: RefundMethod,
     }
   },
   methods: {
     hour(datetime) {
-      const date = new Date(datetime).toLocaleTimeString('fa-IR-u-nu-latn', {
+      const time = new Date(datetime).toLocaleTimeString('fa-IR-u-nu-latn', {
         hour: 'numeric',
         minute: '2-digit',
       })
-      return date
+      // const time = new Intl.DateTimeFormat('fa-IR', {
+      //   timeStyle: 'short',
+      // }).format(datetime)
+      return time
     },
     date(datetime) {
       const date = new Intl.DateTimeFormat('fa-IR', {
@@ -391,37 +400,16 @@ export default {
       return date
     },
     book() {
-      const token =
-        'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2UyNzdhYTBmMDE4N2Y2M2U3MTExYzIxNTcwODUwNWQ1NGViN2M1NTIyMWVhOTBiYWVjNjg1NDE2YjMwNjBmMjQzODdhNzdjMTE0MTEzNWEiLCJpYXQiOjE2NTUyOTE1MjAuNjgxMDQzLCJuYmYiOjE2NTUyOTE1MjAuNjgxMDQ2LCJleHAiOjE2ODY4Mjc1MjAuNTUzNDE3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kpXB2kb9huAbclEktVHpooynVfQ-FzERbFHbTv-UvlzJIDNAsl8JC7myE8ozU-wwvuphx6TqLB_e0X0DoJVB22Z6pjx-VRHt1rzhhR4WO9eI1_Q1UU7LnerOY6viUgxgkgxrpitRRIWz7KwyZW_v-yHiK0oZ3p_rUitd4ABDVw5zv2ryvoT7NJ3HQjQkiTCHE3jehu0qkCQtVGbM-6Z9-7XrFcL_5pK818Iu53YxJZZuV6DYt2Dm_e2qk7SX0Y31YrlysVSVJZW4awEIokYcjOe_oeD1LGFIB-qTnTivSQar-BPUmouUXOYCyMXINrYtQBlRhyT9I9kmLNNOegFi88EwYVGbJ38uj9SKZ3C9Fr0o-fyQm69WEoOQ0qrKDxXgnbxZxPDAbmctCWysWouZVhMBxFUHsKbT-5oY88TOVdEDBkpp_3JFsDmmA8zpotvLQZw765anyEP_1ZDzh6xm8evq9fXNT4IoRAnwYqPuaWxyWoEuAiN2r5ld4m_7fGJzjG99IafvUD1Do9vuP_mkArrW0OTDeN5YZaGESlrheyuIgFPX2usnvaPcnoXJumdQyEcZxSQ57icCB7FKp4Nh0QQcw2tKUSHJ4F_xydoaD4ptzkNf6UAjeFlQ4tQ4B79ommzK0VLAC9mmilcBFocqhh7QPJgJAswErS8bLR0DzrI'
-      axios({
-        method: 'post',
-        url: '/airrevalidate',
-        headers: {
-          Authorization: 'Bearer ' + token,
-        },
-        data: {
-          SessionId: this.$store.state.SessionID,
+      this.$router.push({
+        path: `flights/${
+          this.ticket.OriginDestinationOptions[0].DepartureAirportLocationCode +
+          '-' +
+          this.ticket.OriginDestinationOptions[0].ArrivalAirportLocationCode
+        }/checkout/`,
+        query: {
           FareSourceCode: this.ticket.FareSourceCode,
         },
       })
-        .then((response) => {
-          this.ticketInfo = response.data.PricedItinerary
-          this.$router.push({
-            path: `/flights/${
-              this.ticket.OriginDestinationOptions[0]
-                .DepartureAirportLocationCode +
-              '-' +
-              this.ticket.OriginDestinationOptions[0].ArrivalAirportLocationCode
-            }/checkout/`,
-            query: {
-              FareSourceCode: this.ticket.FareSourceCode
-            },
-          })
-          console.log('response', response.data)
-        })
-        .catch((error) => {
-          console.log('error', error.response)
-        })
     },
   },
 }

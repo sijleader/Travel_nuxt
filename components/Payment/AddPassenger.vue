@@ -1,7 +1,7 @@
 <template>
   <div class="theme-payment-page-form">
     <h3 class="theme-payment-page-form-title">اطلاعات مسافر</h3>
-    {{isValidIranianNationalCode("0913123456")}}
+    <!-- {{isValidIranianNationalCode("0913123456")}} -->
     <div class="row row-col-gap" data-gutter="20">
       <div class="col-md-3">
         <div class="theme-payment-page-form-item form-group">

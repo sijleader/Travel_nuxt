@@ -36,8 +36,8 @@ export default {
   plugins: [
     '~/plugins/bootstrap.js',
     '~/plugins/vue2-filters',
-    '~/plugins/v-select.js',
-    '~/plugins/vue-composition.js',
+    // '~/plugins/v-select.js',
+    // '~/plugins/vue-composition.js',
     '~/plugins/vuePhoneNumberInput.js',
     { src: "~/plugins/vue-js-modal", mode: "client" },
     { src: '~/plugins/jquery.js', ssr: false },
@@ -80,7 +80,7 @@ export default {
     '@nuxt/content',
     '@nuxtjs/auth',
     'bootstrap-vue/nuxt',
-    'nuxt-vue-multiselect',
+    // 'nuxt-vue-multiselect',
     'cookie-universal-nuxt',
     '@nuxt/http',
     'nuxt-leaflet',
@@ -125,9 +125,11 @@ export default {
   },
 
   proxy: {
+    '/CreateSession':'https://apidemo.partocrs.com/Rest/Authenticate',
+
     '/login':'http://127.0.0.1:8000/rest/passenger',
     '/login/verify':'http://127.0.0.1:8000/rest/passenger',
-    '/citieslist':'http://127.0.0.1:8000/rest/flights',
+    // '/citieslist':'http://127.0.0.1:8000/rest/flights',
 
     '/search':'http://127.0.0.1:8000/rest/flights',
     '/book':'http://127.0.0.1:8000/rest/flights',
@@ -137,7 +139,7 @@ export default {
     '/airbaggages':'http://127.0.0.1:8000/rest/flights',
 
     '/book/checkout':'http://127.0.0.1:8000/rest/flights',
-    '/pg/StartPay/':'https://www.zarinpal.com',
+    // '/pg/StartPay/':'https://www.zarinpal.com',
     '/book/checkoutverify':'http://127.0.0.1:8000/rest/flights',
   },
   auth: {

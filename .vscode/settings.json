@@ -1,6 +1,6 @@
 {
     "editor.fontSize": 16,
-    "files.autoSave": "onWindowChange",
+    "files.autoSave": "off",
     "editor.tabSize": 4,
     "editor.codeLensFontSize": 0
 }

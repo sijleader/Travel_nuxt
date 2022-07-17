@@ -271,7 +271,6 @@ export default {
       results: null,
       new_cities: [],
       SessionID: null,
-      // isLoading: true,
     }
   },
   computed: {
@@ -286,27 +285,9 @@ export default {
     },
   },
   mounted() {
-  //   const token =
-  //     'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2UyNzdhYTBmMDE4N2Y2M2U3MTExYzIxNTcwODUwNWQ1NGViN2M1NTIyMWVhOTBiYWVjNjg1NDE2YjMwNjBmMjQzODdhNzdjMTE0MTEzNWEiLCJpYXQiOjE2NTUyOTE1MjAuNjgxMDQzLCJuYmYiOjE2NTUyOTE1MjAuNjgxMDQ2LCJleHAiOjE2ODY4Mjc1MjAuNTUzNDE3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kpXB2kb9huAbclEktVHpooynVfQ-FzERbFHbTv-UvlzJIDNAsl8JC7myE8ozU-wwvuphx6TqLB_e0X0DoJVB22Z6pjx-VRHt1rzhhR4WO9eI1_Q1UU7LnerOY6viUgxgkgxrpitRRIWz7KwyZW_v-yHiK0oZ3p_rUitd4ABDVw5zv2ryvoT7NJ3HQjQkiTCHE3jehu0qkCQtVGbM-6Z9-7XrFcL_5pK818Iu53YxJZZuV6DYt2Dm_e2qk7SX0Y31YrlysVSVJZW4awEIokYcjOe_oeD1LGFIB-qTnTivSQar-BPUmouUXOYCyMXINrYtQBlRhyT9I9kmLNNOegFi88EwYVGbJ38uj9SKZ3C9Fr0o-fyQm69WEoOQ0qrKDxXgnbxZxPDAbmctCWysWouZVhMBxFUHsKbT-5oY88TOVdEDBkpp_3JFsDmmA8zpotvLQZw765anyEP_1ZDzh6xm8evq9fXNT4IoRAnwYqPuaWxyWoEuAiN2r5ld4m_7fGJzjG99IafvUD1Do9vuP_mkArrW0OTDeN5YZaGESlrheyuIgFPX2usnvaPcnoXJumdQyEcZxSQ57icCB7FKp4Nh0QQcw2tKUSHJ4F_xydoaD4ptzkNf6UAjeFlQ4tQ4B79ommzK0VLAC9mmilcBFocqhh7QPJgJAswErS8bLR0DzrI'
-  //   axios({
-  //     method: 'get',
-  //     url: '/citieslist',
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       this.$store.state.cities = response.data.FLIGHTSCITIES
-        for (let i = 0; i < this.cities.length; i++) {
-          this.new_cities.push(this.cities[i].iata)
-        }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //     })
-  //   // setTimeout(() => {
-  //   //   this.isLoading = false
-  //   // }, 4500)
+    for (let i = 0; i < this.cities.length; i++) {
+      this.new_cities.push(this.cities[i].iata)
+    }
   },
   methods: {
     addAdult() {
@@ -368,14 +349,14 @@ export default {
       })
         .then((response) => {
           this.$store.state.results = response.data.FLIGHTS_API_LIST
-          this.$store.state.SessionID = response.data.SESSIONID
+          // this.$cookies.set('SessionID', response.data.SESSIONID, {
+          //   maxAge: 60 * 15,
+          // })
+          this.$cookies.set('SessionID', response.data.SESSIONID)
           this.$router.push({
             path: 'flights',
             query: {
-              Route:
-                this.departure +
-                '-' +
-                this.destination,
+              Route: this.departure + '-' + this.destination,
               DepartureDate: new PersianDate(this.start)
                 .calendar('jalali')
                 .toString('?YYYY-?MM-?DD'),
@@ -383,9 +364,6 @@ export default {
               ChildCount: this.child,
               InfantCount: this.infant,
             },
-          })
-          this.$cookies.set('SessionID', response.data.SESSIONID, {
-            maxAge: 60 * 15,
           })
           console.log('response', response.data)
         })

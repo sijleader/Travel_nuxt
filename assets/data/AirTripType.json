@@ -1,22 +1,6 @@
-[
-  {
-    "Name": "OneWay",
-    "Value": "1",
-    "Description": "One Way"
-  },
-  {
-    "Name": "Return",
-    "Value": "2",
-    "Description": "Round Trip"
-  },
-  {
-    "Circle": "Circle",
-    "Value": "3",
-    "Description": "Circle"
-  },
-  {
-    "Circle": "OpenJaw",
-    "Value": "4",
-    "Description": "Open-Jaw"
-  }
-]
+{
+  "1": "یک طرفه",
+  "2": "Return",
+  "3": "Circle",
+  "4": "OpenJaw"
+}

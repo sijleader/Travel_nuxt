@@ -1,76 +1,64 @@
 <template>
-  <div class="theme-page-section theme-page-section-lg">
-    <div class="container">
-      <div
-        id="sticky-parent"
-        class="row row-col-static row-col-mob-gap"
-        data-gutter="60"
-      >
-        <div class="col-md-8">
-          <div class="theme-payment-page-sections">
-            <FlightDetails />
-            {{ ticketInfo }}
-            <div class="theme-payment-page-sections-item">
-              <h3 class="theme-payment-page-sections-item-title">
-                مسافر را انتخاب کنید
-              </h3>
-              <!-- <div v-text="$PersianDate.toString()"></div> -->
-              <!-- <div>{{ $PersianDate.toString() }}</div> -->
-              <!-- {{ ticketInfo }} -->
-              <!-- <div class="row">
-                <div class="col-md-6">
-                  <div class="theme-payment-page-form-item form-group">
-                    <i class="fa fa-angle-down"></i>
-                    <GridMultiSelect
-                      v-model="selectedItems"
-                      title="انتخاب مسافر"
-                      :items="passengers"
-                      item-key="national_id"
-                      item-label="persian_lname"
-                      menu-position="float"
-                      empty-message="مسافری انتخاب نشده"
-                    />
-                  </div>
+  <!-- <div> -->
+    <div class="theme-page-section theme-page-section-lg">
+      <div class="container">
+        <div class="row row-col-static row-col-mob-gap">
+          <div class="col-md-8">
+            <div class="theme-payment-page-sections">
+              <FlightDetails :details="ticketInfo" />
+              <div class="theme-payment-page-sections-item">
+                <h3 class="theme-payment-page-sections-item-title">
+                  مسافر را انتخاب کنید
+                </h3>
+                <a
+                  class="theme-payment-page-sections-item-new-link"
+                  data-bs-toggle="collapse"
+                  aria-expanded="false"
+                  aria-controls="AddNewTraveler"
+                >
+                  اضافه کردن مسافر جدید
+                </a>
+                <div class="theme-payment-page-sections-item-new-extend">
+                  <AddPassenger />
                 </div>
-              </div> -->
-              {{ this.$store.state.passengers }}
-              <br />
-              <a
-                class="theme-payment-page-sections-item-new-link"
-                data-bs-toggle="collapse"
-                aria-expanded="false"
-                aria-controls="AddNewTraveler"
-              >
-                + اضافه کردن مسافر جدید
-              </a>
-              <div class="theme-payment-page-sections-item-new-extend">
-                <AddPassenger />
               </div>
-              <!-- <div
-                id="AddNewTraveler"
-                class="theme-payment-page-sections-item-new-extend"
-              >
-                <AddPassenger />
-              </div> -->
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="sticky-col">
-            <div class="theme-sidebar-section _mb-10">
-              <h5 class="theme-sidebar-section-title">اتهامات</h5>
-              <div class="theme-sidebar-section-charges">
-                <ul class="theme-sidebar-section-charges-list">
-                  <li class="theme-sidebar-section-charges-item"></li>
-                  <li class="theme-sidebar-section-charges-item">
+          <div class="col-md-4">
+            <div class="sticky-col">
+              <div class="theme-sidebar-section _mb-10">
+                <h5 class="theme-sidebar-section-title">اتهامات</h5>
+                <div class="theme-sidebar-section-charges">
+                  <ul
+                    class="theme-sidebar-section-charges-list"
+                    v-for="(object, index) in ticketInfo
+                      .FLIGHTS_API_AIR_REVALIDATE.PricedItinerary
+                      .AirItineraryPricingInfo.PtcFareBreakdown"
+                    :key="index"
+                  >
+                    <!-- <li class="theme-sidebar-section-charges-item"></li> -->
+                    <li class="theme-sidebar-section-charges-item">
+                      <h5 class="theme-sidebar-section-charges-item-title">
+                        {{ object.PassengerTypeQuantity.Quantity }}
+                        {{
+                          PassengerType[
+                            object.PassengerTypeQuantity.PassengerType
+                          ]
+                        }}
+                      </h5>
+                      <p class="theme-sidebar-section-charges-item-price">
+                        {{ object.PassengerFare.TotalFare }} تومان
+                      </p>
+                    </li>
+                    <!-- <li class="theme-sidebar-section-charges-item">
                     <h5 class="theme-sidebar-section-charges-item-title">
                       1 بزرگسال
                     </h5>
                     <p class="theme-sidebar-section-charges-item-price">
                       615000 تومان
                     </p>
-                  </li>
-                  <li class="theme-sidebar-section-charges-item">
+                  </li> -->
+                    <!-- <li class="theme-sidebar-section-charges-item">
                     <h5 class="theme-sidebar-section-charges-item-title">
                       1 کودک
                     </h5>
@@ -94,78 +82,69 @@
                     <p class="theme-sidebar-section-charges-item-price">
                       55000 تومان
                     </p>
-                  </li>
-                </ul>
-                <p class="theme-sidebar-section-charges-total">
-                  مجموع
-                  <span>670000 تومان</span>
-                </p>
+                  </li> -->
+                  </ul>
+                  <p class="theme-sidebar-section-charges-total">
+                    مجموع
+                    <!-- <span>670000 تومان</span> -->
+                    <span
+                      >{{
+                        ticketInfo.FLIGHTS_API_AIR_REVALIDATE.PricedItinerary
+                          .AirItineraryPricingInfo.ItinTotalFare.TotalFare
+                      }}
+                      تومان</span
+                    >
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="theme-payment-page-booking">
-            <div class="theme-payment-page-booking-header">
-              <p class="theme-sidebar-section-features-list-body">
-                کلیک بر روی دکمه رزرو، به منزله موافقت با شرایط و ضوابط ضمانت
-                بازگشت پول می‌باشد.
-              </p>
-            </div>
-            <!-- <button
+            <div class="theme-payment-page-booking">
+              <div class="theme-payment-page-booking-header">
+                <p class="theme-sidebar-section-features-list-body">
+                  کلیک بر روی دکمه رزرو، به منزله موافقت با شرایط و ضوابط ضمانت
+                  بازگشت پول می‌باشد.
+                </p>
+              </div>
+              <!-- <button
               class="btn _tt-uc btn-primary-inverse btn-lg btn-block"
               href="#"
             >
               رزرو کن
             </button> -->
-            <nuxt-link
-              class="btn _tt-uc btn-primary-inverse btn-lg btn-block"
-              to="/singles/payment"
-            >
-              رزرو کن
-            </nuxt-link>
+              <nuxt-link
+                class="btn _tt-uc btn-primary-inverse btn-lg btn-block"
+                to="/singles/payment"
+              >
+                رزرو کن
+              </nuxt-link>
+              <pre dir="ltr"
+                >{{ ticketInfo.FLIGHTS_API_AIR_REVALIDATE.PricedItinerary }}
+            </pre
+              >
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
-// import GridMultiSelect from 'vue-gridmultiselect'
-// import 'vue-gridmultiselect/dist/vue-gridmultiselect.css'
 import axios from 'axios'
 import AddPassenger from '~/components/Payment/AddPassenger.vue'
 import FlightDetails from '~/components/Payment/Details.vue'
+import PassengerType from '@/assets/data/PassengerType.json'
 
-// import Multiselect from '~/components/Multiselect.vue'
 export default {
-  // props:{
-  //   ticketInfo:{
-  //     type:Object,
-  //     required:true
-  //   }
-  // },
   components: {
-    // GridMultiSelect,
     AddPassenger,
     FlightDetails,
-    // Multiselect
   },
   layout: 'profile',
   data() {
     return {
-      // selectedItems: null,
-      // latin_fname: '',
-      // latin_lname: '',
-      // persian_fname: '',
-      // persian_lname: '',
-      // sex: '',
-      // national_id: '',
-      // birthday_date: '',
-      // birthday_country: '',
-      // passport_id: '',
-      // passport_issue: '',
-      // passport_expire: '',
       ticketInfo: null,
+      PassengerType: PassengerType,
     }
   },
   mounted() {
@@ -178,30 +157,23 @@ export default {
         Authorization: 'Bearer ' + token,
       },
       data: {
-        SessionId: this.$store.state.SessionID,
-        // FareSourceCode: this.$route.query.FareSourceCode,
+        SessionId: this.$cookies.get('SessionID'),
         FareSourceCode: this.$route.query.FareSourceCode,
       },
     })
       .then((response) => {
-        this.ticketInfo = response.data.FLIGHTS_API_AIR_REVALIDATE
+        this.ticketInfo = response.data
+        // this.ticketInfo = response.data.FLIGHTS_API_AIR_REVALIDATE.PricedItinerary.AirItineraryPricingInfo.ItinTotalFare.TotalFare
         console.log('response', response.data)
       })
       .catch((error) => {
         console.log('error', error.response)
       })
   },
-  // methods: {
-  //   getAge(dateString) {
-  //     const today = new Date()
-  //     const birthDate = new Date(dateString)
-  //     let age = today.getFullYear() - birthDate.getFullYear()
-  //     const m = today.getMonth() - birthDate.getMonth()
-  //     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-  //       age--
-  //     }
-  //     return age
-  //   },
-  // },
+  methods: {
+    // getHour(date){
+    //   return
+    // }
+  },
 }
 </script>

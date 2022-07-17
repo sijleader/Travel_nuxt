@@ -1,17 +1,5 @@
-[
-  {
-    "Name": "Offline",
-    "Value": "0",
-    "Description": ""
-  },
-  {
-    "Name": "Online",
-    "Value": "1",
-    "Description": ""
-  },
-  {
-    "Name": "NonRefundable",
-    "Value": "2",
-    "Description": ""
-  }
-]
+{
+  "0":"برگشت به صورت سیستمی است",
+  "1":"برگشت به صورت آنلاین امکانپذیر است",
+  "2":"غیرقابل برگشت"
+}

@@ -92,10 +92,12 @@
   </div>
 </template>
 
-<script setup>
+<script >
+
 import QA from '~/components/QA'
-export default {
-  components: {
+
+export default{
+components: {
     QA,
   },
   layout: 'default',

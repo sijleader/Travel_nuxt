@@ -86,7 +86,7 @@
               </select>
             </div>
             <FilterMobile />
-            <div v-for="(ticket,i) in results" :key="i" class="theme-search-results">
+            <div v-for="(ticket,i) in ticketResults" :key="i" class="theme-search-results">
               <Ticket :ticket="ticket"/>
             </div>
             <!-- <div
@@ -147,13 +147,11 @@ export default {
   data() {
     return {
       isLoading: true,
-      results: this.$store.state.results,
+      ticketResults: this.$store.state.results,
     }
   },
   mounted() {
-    setTimeout(() => {
-      this.isLoading = false
-    }, 4500)
+    console.log(this.$store.state.results)
   },
 }
 </script>
