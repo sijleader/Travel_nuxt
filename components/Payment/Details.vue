@@ -3,18 +3,10 @@
     <div class="theme-search-results-item theme-payment-page-item-thumb">
       <div class="row" data-gutter="20">
         <div class="col-md-9">
-          <p class="theme-search-results-item-flight-payment-airline">
+          <h2 class="theme-search-results-item-flight-payment-airline">
             شما در حال پرواز با خطوط هوایی آمریکا هستید
-          </p>
-          <h5 class="theme-search-results-item-title">لندن ← نیویورک</h5>
-          <!-- <h5 class="theme-search-results-item-title">{{details.PricedItinerary.OriginDestinationOptions[0].FlightSegments[0].ArrivalAirportLocationCode}} ← {{details.PricedItinerary.OriginDestinationOptions[0].FlightSegments[0].DepartureAirportLocationCode}}</h5> -->
-          <p class="theme-search-results-item-flight-payment-info">
-            رفت و برگشت، اقتصادی، 1 بزرگسال
-          </p>
-          <ul class="theme-search-results-item-flight-payment-dates">
-            <li>خروج: 17 آبان 1400</li>
-            <li>بازگشت: دوشنبه 25 آبان</li>
-          </ul>
+          </h2>
+          <h5 class="theme-search-results-item-title">{{details.OriginDestinationOptions[0].ArrivalAirportLocationCode}} ← {{details.OriginDestinationOptions[0].DepartureAirportLocationCode}}</h5>          
           <div class="theme-search-results-item-flight-detail-items">
             <div class="theme-search-results-item-flight-details">
               <div class="row">
@@ -23,27 +15,38 @@
                     <h5
                       class="theme-search-results-item-flight-details-info-title"
                     >
-                      برگشت
+                      پرواز {{ AirTripType[details.DirectionInd]}}
                     </h5>
+                    <p
+                      class="theme-search-results-item-flight-details-info"
+                    >
+                      
+                    </p>
                     <p
                       class="theme-search-results-item-flight-details-info-date"
                     >
-                      سه شنبه 23 می
+                      {{date(details.OriginDestinationOptions[0].DepartureDateTime)}}
                     </p>
                     <p
                       class="theme-search-results-item-flight-details-info-cities"
                     >
-                      نیویورک ← لندن
                     </p>
                     <p
                       class="theme-search-results-item-flight-details-info-fly-time"
                     >
-                      <!-- {{details.PricedItinerary.OriginDestinationOptions[0].FlightSegments[0].JourneyDurationPerMinute}}دقیقه -->
+                      <p v-for="(object, index) in details.AirItineraryPricingInfo
+                    .PtcFareBreakdown"
+                  :key="index" class="theme-search-results-item-flight-payment-info">
+             {{ object.PassengerTypeQuantity.Quantity }} {{
+                        PassengerType[
+                          object.PassengerTypeQuantity.PassengerType
+                        ]
+                      }}
+          </p>
                     </p>
                     <p
                       class="theme-search-results-item-flight-details-info-stops"
                     >
-                      بدون وقفه
                     </p>
                   </div>
                 </div>
@@ -71,8 +74,8 @@
                         >
                           <span
                             class="theme-search-results-item-flight-details-schedule-time-item"
-                            >06:50
-                            <span>صبح</span>
+                            >
+                            {{hour(details.OriginDestinationOptions[0].DepartureDateTime)}}
                           </span>
                           <span
                             class="theme-search-results-item-flight-details-schedule-time-separator"
@@ -81,14 +84,14 @@
                           </span>
                           <span
                             class="theme-search-results-item-flight-details-schedule-time-item"
-                            >09:20
-                            <span>بعد از ظهر</span>
+                            >
+                            {{hour(details.OriginDestinationOptions[0].ArrivalDateTime)}}
                           </span>
                         </div>
                         <p
                           class="theme-search-results-item-flight-details-schedule-fly-time"
                         >
-                          <!-- {{details.PricedItinerary.OriginDestinationOptions[0].FlightSegments[0].JourneyDurationPerMinute}}دقیقه -->
+                          {{details.OriginDestinationOptions[0].JourneyDurationPerMinute}}دقیقه
                         </p>
                         <div
                           class="theme-search-results-item-flight-details-schedule-destination"
@@ -99,12 +102,12 @@
                             <p
                               class="theme-search-results-item-flight-details-schedule-destination-title"
                             >
-                              لوتون
+                              {{details.OriginDestinationOptions[0].DepartureAirportLocationCode}}
                             </p>
                             <p
                               class="theme-search-results-item-flight-details-schedule-destination-city"
                             >
-                              لندن
+                              ایران
                             </p>
                           </div>
                           <div
@@ -118,30 +121,20 @@
                             <p
                               class="theme-search-results-item-flight-details-schedule-destination-title"
                             >
-                              گاردیا
+                              {{details.OriginDestinationOptions[0].ArrivalAirportLocationCode}}
                             </p>
                             <p
                               class="theme-search-results-item-flight-details-schedule-destination-city"
                             >
-                              نیویورک
+                              ایران
                             </p>
                           </div>
                         </div>
                         <ul
                           class="theme-search-results-item-flight-details-schedule-features"
                         >
-                          <li>6980 آمریکایی</li>
-                          <!-- <li>پرواز شماره{{data.OriginDestinationOptions[0].FlightSegments[0].OperatingAirline.FlightNumber || details.OriginDestinationOptions[0].FlightSegments[0].FlightNumber}}</li> -->
-                          <!-- <li>جت پهن پیکر</li> -->
-                          <!-- <li>جت پهن پیکر</li> -->
-                          <!-- <li>جت پهن پیکر</li> -->
-                          <li>جت پهن پیکر</li>
-                          <li>بوئینگ 777</li>
-                          <!-- <li>
-                            {{
-                              details.FareSourceCode
-                            }}
-                          </li> -->
+                          <li>پرواز {{details.OriginDestinationOptions[0].FlightNumber}} </li>
+                          <li>{{details.OriginDestinationOptions[0].Equipment}}</li>
                         </ul>
                       </li>
                     </ul>
@@ -160,28 +153,40 @@
           </div>
         </div>
       </div>
-      <pre dir="ltr">
-        {{ details }}
-      </pre>
     </div>
   </div>
 </template>
 
 <script>
-// import axios from 'axios'
-// import AirTripType from "@/assets/data/AirTripType.json"
+import AirTripType from "@/assets/data/AirTripType.json"
+import PassengerType from '@/assets/data/PassengerType.json'
+
 export default {
-  props:['details']
-  // props: {
-  //   details: {
-  //     type: Object,
-  //     required: true,
-  //   },
-  // },
-  // mounted(){
-  //   if(this.details.PricedItinerary){
-  //     alert('مجددا جستجو را انجام دهید')
-  //   }
-  // }
+  props: {
+    details: {
+      type: Object,
+      required: true,
+    },
+  },
+  data(){
+    return{
+      AirTripType:AirTripType,
+      PassengerType:PassengerType
+    }
+  },
+  methods:{
+    hour(datetime) {
+      const time = new Intl.DateTimeFormat('fa-IR', {
+        timeStyle: 'short',
+      }).format(new Date(datetime))
+      return time
+    },
+    date(datetime) {
+      const date = new Intl.DateTimeFormat('fa-IR', {
+        dateStyle: 'medium',
+      }).format(new Date(datetime))
+      return date
+    },
+  }
 }
 </script>

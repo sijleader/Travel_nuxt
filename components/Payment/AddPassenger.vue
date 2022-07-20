@@ -1,7 +1,6 @@
 <template>
   <div class="theme-payment-page-form">
     <h3 class="theme-payment-page-form-title">اطلاعات مسافر</h3>
-    <!-- {{isValidIranianNationalCode("0913123456")}} -->
     <div class="row row-col-gap" data-gutter="20">
       <div class="col-md-3">
         <div class="theme-payment-page-form-item form-group">
@@ -52,6 +51,7 @@
             <option value="male">آقا</option>
             <option value="female">خانم</option>
           </select>
+          <div>Picked: {{ sex }}</div>
         </div>
       </div>
       <div class="col-md-3">
@@ -74,7 +74,7 @@
           />
         </div>
       </div>
-      <div class="col-md-3">
+      <!-- <div class="col-md-3">
         <div class="theme-payment-page-form-item form-group">
           <i class="fa fa-angle-down"></i>
           <select v-model="birthday_country" class="form-control">
@@ -82,8 +82,8 @@
             <option value="iran">ایران</option>
           </select>
         </div>
-      </div>
-      <div class="col-md-3">
+      </div> -->
+      <!-- <div class="col-md-3">
         <div class="theme-payment-page-form-item form-group">
           <input
             v-model="passport_id"
@@ -92,8 +92,8 @@
             placeholder="شماره پاسپورت"
           />
         </div>
-      </div>
-      <div class="col-md-4">
+      </div> -->
+      <!-- <div class="col-md-4">
         <div class="theme-payment-page-form-item form-group">
           <i class="fa fa-angle-down"></i>
           <select v-model="passport_issue" class="form-control">
@@ -101,8 +101,8 @@
             <option value="iran">ایران</option>
           </select>
         </div>
-      </div>
-      <div class="col-md-3">
+      </div> -->
+      <!-- <div class="col-md-3">
         <div class="theme-payment-page-form-item form-group">
           <input
             v-model="passport_expire"
@@ -111,7 +111,7 @@
             placeholder="تاریخ انقضای پاسپورت"
           />
         </div>
-      </div>
+      </div> -->
       <div class="col-md-12">
         <div class="theme-payment-page-form-item form-group">
           <div class="row fix-button buttons">
@@ -125,9 +125,9 @@
             </div>
             <div class="col-xs-8 col-md-6 parent-of-confirm-edit">
               <button
-                @click.prevent="addPassenger()"
                 class="btn btn-primary btn-block"
                 type="submit"
+                @click.prevent="addPassenger()"
               >
                 ثبت
               </button>
@@ -150,10 +150,10 @@ export default {
       sex: '',
       national_id: '',
       birthday_date: '',
-      birthday_country: '',
-      passport_id: '',
-      passport_issue: '',
-      passport_expire: '',
+      // birthday_country: '',
+      // passport_id: '',
+      // passport_issue: '',
+      // passport_expire: '',
     }
   },
   methods: {
@@ -176,12 +176,15 @@ export default {
         pGender: this.sex,
         meliCode: this.national_id,
         birthday: this.birthday_date,
-        nationality: this.birthday_country,
-        passNumber: this.passport_id,
-        passport_issue: this.passport_issue,
-        exPass: this.passport_expire,
+        // nationality: this.birthday_country,
+        // passNumber: this.passport_id,
+        // passport_issue: this.passport_issue,
+        // exPass: this.passport_expire,
       }
       this.$store.state.passengers.push(passengerData)
+    },
+    onChange(event) {
+      this.sex = event.target.value
     },
   },
 }

@@ -349,10 +349,10 @@ export default {
       })
         .then((response) => {
           this.$store.state.results = response.data.FLIGHTS_API_LIST
-          // this.$cookies.set('SessionID', response.data.SESSIONID, {
-          //   maxAge: 60 * 15,
-          // })
-          this.$cookies.set('SessionID', response.data.SESSIONID)
+          this.$cookies.set('SessionID', response.data.SESSIONID, {
+            maxAge: 60 * 60 * 15,
+          })
+          // this.$cookies.set('SessionID', response.data.SESSIONID)
           this.$router.push({
             path: 'flights',
             query: {

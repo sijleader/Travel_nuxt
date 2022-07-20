@@ -126,20 +126,18 @@ export default {
 
   proxy: {
     '/CreateSession':'https://apidemo.partocrs.com/Rest/Authenticate',
+    '/AirOrderTicket':'https://apidemo.partocrs.com/Rest/Air',
 
     '/login':'http://127.0.0.1:8000/rest/passenger',
     '/login/verify':'http://127.0.0.1:8000/rest/passenger',
-    // '/citieslist':'http://127.0.0.1:8000/rest/flights',
 
     '/search':'http://127.0.0.1:8000/rest/flights',
     '/book':'http://127.0.0.1:8000/rest/flights',
 
-    '/airrevalidate':'http://127.0.0.1:8000/rest/flights',
-    '/airfarefamily':'http://127.0.0.1:8000/rest/flights',
-    '/airbaggages':'http://127.0.0.1:8000/rest/flights',
-
+    '/airorderticket':'http://127.0.0.1:8000/rest/flights',
+    '/airbookingdata':'http://127.0.0.1:8000/rest/flights',
+    
     '/book/checkout':'http://127.0.0.1:8000/rest/flights',
-    // '/pg/StartPay/':'https://www.zarinpal.com',
     '/book/checkoutverify':'http://127.0.0.1:8000/rest/flights',
   },
   auth: {

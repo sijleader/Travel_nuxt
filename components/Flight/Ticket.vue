@@ -382,15 +382,15 @@ export default {
       RefundMethod: RefundMethod,
     }
   },
+  mounted(){
+    this.$store.state.TicketInfo=this.ticket
+    this.$store.state.FareSourceCode=this.ticket.FareSourceCode
+  },
   methods: {
     hour(datetime) {
-      const time = new Date(datetime).toLocaleTimeString('fa-IR-u-nu-latn', {
-        hour: 'numeric',
-        minute: '2-digit',
-      })
-      // const time = new Intl.DateTimeFormat('fa-IR', {
-      //   timeStyle: 'short',
-      // }).format(datetime)
+      const time = new Intl.DateTimeFormat('fa-IR', {
+        timeStyle: 'short',
+      }).format(new Date(datetime))
       return time
     },
     date(datetime) {

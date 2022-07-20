@@ -20,7 +20,9 @@ export const store = () => {
       SessionID:null,
       TicketInfo:null,
       cities:[],
-      passengers:[]
+      passengers:[],
+      UniqueId:null,
+      FareSourceCode:null
       // }
     },
     mutations: {
